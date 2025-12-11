@@ -1,143 +1,296 @@
 /**
  * Knowledge Nexus Authentication Module
  *
- * Handles Auth0 authentication using the SPA SDK.
- * Provides login, logout, and user profile management.
+ * Handles Google Sign-In authentication directly (no Auth0).
+ * Uses Google Identity Services library and your backend's /api/auth/google endpoint.
  */
 
 class AuthManager {
     constructor() {
-        this.auth0Client = null;
         this.isAuthenticated = false;
         this.user = null;
         this.accessToken = null;
+        this.refreshToken = null;
         this.initialized = false;
+        this.googleClientId = null;
     }
 
     /**
-     * Initialize the Auth0 client
-     * Must be called before any other auth methods
+     * Initialize the authentication system
+     * Loads Google client ID from backend and checks existing session
      */
     async init() {
         if (this.initialized) return;
 
         try {
-            // Create Auth0 client instance
-            this.auth0Client = await auth0.createAuth0Client({
-                domain: CONFIG.auth0.domain,
-                clientId: CONFIG.auth0.clientId,
-                authorizationParams: {
-                    redirect_uri: CONFIG.auth0.redirectUri,
-                    audience: CONFIG.auth0.audience,
-                    scope: CONFIG.auth0.scope,
-                },
-                cacheLocation: 'localstorage',
-                useRefreshTokens: true,
-            });
+            // Try to fetch Google client ID from backend
+            await this.loadGoogleClientId();
 
-            // Handle callback if returning from Auth0
-            if (window.location.search.includes('code=') &&
-                window.location.search.includes('state=')) {
-                await this.handleCallback();
+            // Check for existing session in localStorage
+            this.loadSession();
+
+            // If we have tokens, verify they're still valid
+            if (this.accessToken) {
+                await this.verifySession();
             }
 
-            // Check if user is already authenticated
-            this.isAuthenticated = await this.auth0Client.isAuthenticated();
-
-            if (this.isAuthenticated) {
-                await this.loadUserProfile();
-            }
+            // Initialize Google Sign-In
+            await this.initGoogleSignIn();
 
             this.initialized = true;
             return true;
         } catch (error) {
             console.error('Auth initialization failed:', error);
-            this.initialized = true; // Mark as initialized even on error
+            this.initialized = true;
             return false;
         }
     }
 
     /**
-     * Handle the callback from Auth0 after login
+     * Fetch Google Client ID from backend
      */
-    async handleCallback() {
+    async loadGoogleClientId() {
         try {
-            await this.auth0Client.handleRedirectCallback();
-            // Clean up the URL
-            window.history.replaceState({}, document.title, window.location.pathname);
+            // Try to get from backend first
+            const response = await fetch(
+                `${CONFIG.api.baseUrl}${CONFIG.api.endpoints.googleClientId}`
+            );
+
+            if (response.ok) {
+                const data = await response.json();
+                this.googleClientId = data.client_id;
+            } else {
+                // Fall back to config
+                this.googleClientId = CONFIG.google.clientId;
+            }
         } catch (error) {
-            console.error('Callback handling failed:', error);
-            throw error;
+            // Use config as fallback
+            this.googleClientId = CONFIG.google.clientId;
         }
     }
 
     /**
-     * Load the user's profile from Auth0
+     * Initialize Google Sign-In button and One Tap
      */
-    async loadUserProfile() {
-        try {
-            this.user = await this.auth0Client.getUser();
-            this.accessToken = await this.auth0Client.getTokenSilently();
-            return this.user;
-        } catch (error) {
-            console.error('Failed to load user profile:', error);
-            return null;
-        }
-    }
-
-    /**
-     * Initiate login flow
-     * Redirects user to Auth0 login page
-     */
-    async login(options = {}) {
-        if (!this.auth0Client) {
-            console.error('Auth not initialized');
+    async initGoogleSignIn() {
+        if (!this.googleClientId || this.googleClientId.includes('YOUR_')) {
+            console.warn('Google Client ID not configured');
             return;
         }
 
-        try {
-            await this.auth0Client.loginWithRedirect({
-                authorizationParams: {
-                    screen_hint: options.signup ? 'signup' : 'login',
-                    ...options.authorizationParams,
-                },
-                appState: {
-                    returnTo: options.returnTo || window.location.pathname,
-                },
+        // Wait for Google library to load
+        if (typeof google === 'undefined') {
+            console.warn('Google Identity Services not loaded');
+            return;
+        }
+
+        google.accounts.id.initialize({
+            client_id: this.googleClientId,
+            callback: this.handleGoogleCallback.bind(this),
+            auto_select: false,
+            cancel_on_tap_outside: true,
+        });
+
+        // Render Google Sign-In button if container exists
+        const buttonContainer = document.getElementById('google-signin-button');
+        if (buttonContainer) {
+            google.accounts.id.renderButton(buttonContainer, {
+                theme: 'outline',
+                size: 'large',
+                type: 'standard',
+                text: 'signin_with',
+                shape: 'rectangular',
+                logo_alignment: 'left',
             });
-        } catch (error) {
-            console.error('Login failed:', error);
-            throw error;
         }
     }
 
     /**
-     * Initiate signup flow
-     * Same as login but shows signup screen
+     * Handle Google Sign-In callback
      */
-    async signup(options = {}) {
-        return this.login({ ...options, signup: true });
+    async handleGoogleCallback(response) {
+        try {
+            showLoading();
+
+            // Send credential to our backend
+            const authResponse = await fetch(
+                `${CONFIG.api.baseUrl}${CONFIG.api.endpoints.googleAuth}`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        credential: response.credential,
+                    }),
+                }
+            );
+
+            if (!authResponse.ok) {
+                const error = await authResponse.json();
+                throw new Error(error.detail || 'Authentication failed');
+            }
+
+            const data = await authResponse.json();
+
+            // Store tokens and user info
+            this.accessToken = data.access_token;
+            this.refreshToken = data.refresh_token;
+            this.user = data.user;
+            this.isAuthenticated = true;
+
+            // Persist to localStorage
+            this.saveSession();
+
+            // Update UI
+            if (typeof updateAuthUI === 'function') {
+                updateAuthUI();
+            }
+
+            // Check for pending actions (like selecting a plan)
+            if (typeof checkPendingActions === 'function') {
+                await checkPendingActions();
+            }
+
+            hideLoading();
+
+            // If new user, show welcome message
+            if (data.is_new_user) {
+                showMessage(`Welcome to Knowledge Nexus, ${this.user.full_name || this.user.username}!`);
+            }
+
+        } catch (error) {
+            hideLoading();
+            console.error('Google auth error:', error);
+            showError(error.message || 'Sign in failed. Please try again.');
+        }
     }
 
     /**
-     * Log the user out
+     * Trigger Google Sign-In popup
+     */
+    async login() {
+        if (!this.googleClientId || this.googleClientId.includes('YOUR_')) {
+            showError('Google Sign-In not configured. Please contact support.');
+            return;
+        }
+
+        // Use Google One Tap or redirect flow
+        google.accounts.id.prompt((notification) => {
+            if (notification.isNotDisplayed()) {
+                // One Tap not available, fall back to button click
+                console.log('One Tap not displayed:', notification.getNotDisplayedReason());
+            }
+            if (notification.isSkippedMoment()) {
+                console.log('One Tap skipped:', notification.getSkippedReason());
+            }
+        });
+    }
+
+    /**
+     * Trigger Google Sign-In for signup (same flow, different intent)
+     */
+    async signup() {
+        return this.login();
+    }
+
+    /**
+     * Log out the user
      */
     async logout() {
-        if (!this.auth0Client) {
-            console.error('Auth not initialized');
-            return;
+        // Clear local session
+        this.accessToken = null;
+        this.refreshToken = null;
+        this.user = null;
+        this.isAuthenticated = false;
+
+        // Clear localStorage
+        localStorage.removeItem('kn_access_token');
+        localStorage.removeItem('kn_refresh_token');
+        localStorage.removeItem('kn_user');
+
+        // Revoke Google session
+        if (typeof google !== 'undefined' && this.googleClientId) {
+            google.accounts.id.disableAutoSelect();
         }
 
-        try {
-            await this.auth0Client.logout({
-                logoutParams: {
-                    returnTo: window.location.origin,
-                },
-            });
-        } catch (error) {
-            console.error('Logout failed:', error);
-            throw error;
+        // Update UI
+        if (typeof updateAuthUI === 'function') {
+            updateAuthUI();
         }
+
+        // Reload page to reset state
+        window.location.reload();
+    }
+
+    /**
+     * Save session to localStorage
+     */
+    saveSession() {
+        if (this.accessToken) {
+            localStorage.setItem('kn_access_token', this.accessToken);
+        }
+        if (this.refreshToken) {
+            localStorage.setItem('kn_refresh_token', this.refreshToken);
+        }
+        if (this.user) {
+            localStorage.setItem('kn_user', JSON.stringify(this.user));
+        }
+    }
+
+    /**
+     * Load session from localStorage
+     */
+    loadSession() {
+        this.accessToken = localStorage.getItem('kn_access_token');
+        this.refreshToken = localStorage.getItem('kn_refresh_token');
+
+        const userJson = localStorage.getItem('kn_user');
+        if (userJson) {
+            try {
+                this.user = JSON.parse(userJson);
+                this.isAuthenticated = true;
+            } catch (e) {
+                console.error('Failed to parse user data');
+            }
+        }
+    }
+
+    /**
+     * Verify the current session is still valid
+     */
+    async verifySession() {
+        try {
+            const response = await this.fetchWithAuth(
+                `${CONFIG.api.baseUrl}${CONFIG.api.endpoints.userProfile}`
+            );
+
+            if (response.ok) {
+                const user = await response.json();
+                this.user = user;
+                this.isAuthenticated = true;
+                this.saveSession();
+            } else {
+                // Session invalid, clear it
+                this.clearSession();
+            }
+        } catch (error) {
+            console.error('Session verification failed:', error);
+            // Don't clear session on network errors
+        }
+    }
+
+    /**
+     * Clear session data
+     */
+    clearSession() {
+        this.accessToken = null;
+        this.refreshToken = null;
+        this.user = null;
+        this.isAuthenticated = false;
+        localStorage.removeItem('kn_access_token');
+        localStorage.removeItem('kn_refresh_token');
+        localStorage.removeItem('kn_user');
     }
 
     /**
@@ -152,7 +305,7 @@ class AuthManager {
      */
     getDisplayName() {
         if (!this.user) return null;
-        return this.user.name || this.user.nickname || this.user.email;
+        return this.user.full_name || this.user.username || this.user.email;
     }
 
     /**
@@ -166,71 +319,130 @@ class AuthManager {
      * Get the user's avatar URL
      */
     getAvatar() {
-        return this.user?.picture;
+        return this.user?.profile_picture_url;
     }
 
     /**
-     * Get an access token for API calls
-     * Automatically refreshes if expired
+     * Get the access token for API calls
      */
-    async getAccessToken() {
-        if (!this.auth0Client) {
-            throw new Error('Auth not initialized');
-        }
-
-        try {
-            return await this.auth0Client.getTokenSilently();
-        } catch (error) {
-            console.error('Failed to get access token:', error);
-            // If token refresh fails, user needs to re-authenticate
-            if (error.error === 'login_required') {
-                this.isAuthenticated = false;
-                this.user = null;
-            }
-            throw error;
-        }
-    }
-
-    /**
-     * Check if user is authenticated
-     */
-    async checkAuth() {
-        if (!this.auth0Client) return false;
-        return await this.auth0Client.isAuthenticated();
+    getAccessToken() {
+        return this.accessToken;
     }
 
     /**
      * Make an authenticated API request
      */
     async fetchWithAuth(url, options = {}) {
-        try {
-            const token = await this.getAccessToken();
-
-            const response = await fetch(url, {
-                ...options,
-                headers: {
-                    ...options.headers,
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            if (response.status === 401) {
-                // Token might be invalid, try to refresh
-                this.isAuthenticated = false;
-                throw new Error('Unauthorized');
-            }
-
-            return response;
-        } catch (error) {
-            console.error('Authenticated request failed:', error);
-            throw error;
+        if (!this.accessToken) {
+            throw new Error('Not authenticated');
         }
+
+        const response = await fetch(url, {
+            ...options,
+            headers: {
+                ...options.headers,
+                'Authorization': `Bearer ${this.accessToken}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.status === 401) {
+            // Token expired, try to refresh
+            const refreshed = await this.refreshAccessToken();
+            if (refreshed) {
+                // Retry the request
+                return fetch(url, {
+                    ...options,
+                    headers: {
+                        ...options.headers,
+                        'Authorization': `Bearer ${this.accessToken}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+            } else {
+                this.clearSession();
+                throw new Error('Session expired');
+            }
+        }
+
+        return response;
+    }
+
+    /**
+     * Refresh the access token using refresh token
+     */
+    async refreshAccessToken() {
+        if (!this.refreshToken) return false;
+
+        try {
+            const response = await fetch(
+                `${CONFIG.api.baseUrl}/api/auth/refresh`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        refresh_token: this.refreshToken,
+                    }),
+                }
+            );
+
+            if (response.ok) {
+                const data = await response.json();
+                this.accessToken = data.access_token;
+                if (data.refresh_token) {
+                    this.refreshToken = data.refresh_token;
+                }
+                this.saveSession();
+                return true;
+            }
+        } catch (error) {
+            console.error('Token refresh failed:', error);
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if email has a valid invite (for invite-only system)
+     */
+    async checkInvite(email) {
+        try {
+            const response = await fetch(
+                `${CONFIG.api.baseUrl}${CONFIG.api.endpoints.checkInvite}?email=${encodeURIComponent(email)}`
+            );
+
+            if (response.ok) {
+                return await response.json();
+            }
+        } catch (error) {
+            console.error('Invite check failed:', error);
+        }
+
+        return { has_invite: false };
     }
 }
 
 // Create singleton instance
 const authManager = new AuthManager();
+
+// Helper functions for UI
+function showLoading() {
+    document.body.classList.add('loading');
+}
+
+function hideLoading() {
+    document.body.classList.remove('loading');
+}
+
+function showError(message) {
+    alert(message);
+}
+
+function showMessage(message) {
+    alert(message);
+}
 
 // Export for use in other modules
 if (typeof module !== 'undefined' && module.exports) {

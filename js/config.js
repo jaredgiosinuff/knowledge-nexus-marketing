@@ -6,15 +6,10 @@
  */
 
 const CONFIG = {
-    // Auth0 Configuration
-    // These values will be provided when you set up your Auth0 tenant
-    auth0: {
-        domain: 'YOUR_AUTH0_DOMAIN.auth0.com',  // e.g., 'knowledge-nexus.auth0.com'
-        clientId: 'YOUR_AUTH0_CLIENT_ID',       // e.g., 'abc123xyz...'
-        audience: 'https://api.knowledge-nexus.io',  // API identifier
-        redirectUri: window.location.origin,
-        // Scopes requested during authentication
-        scope: 'openid profile email',
+    // Google OAuth Configuration
+    // Get your client ID from Google Cloud Console -> APIs & Services -> Credentials
+    google: {
+        clientId: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
     },
 
     // API Configuration
@@ -26,10 +21,13 @@ const CONFIG = {
 
         // Endpoints
         endpoints: {
-            userProfile: '/api/v1/users/me',
+            googleAuth: '/api/auth/google',
+            googleClientId: '/api/auth/google/client-id',
+            checkInvite: '/api/auth/check-invite',
+            userProfile: '/api/auth/me',
             subscription: '/api/v1/subscription',
             checkout: '/api/v1/checkout/session',
-            portal: '/api/v1/subscription/portal',
+            billingPortal: '/api/v1/subscription/portal',
         }
     },
 
@@ -77,14 +75,6 @@ const CONFIG = {
         enterpriseContact: true,
         // Show beta badge on new features
         showBetaBadges: false,
-    },
-
-    // Analytics (optional)
-    analytics: {
-        // Google Analytics 4
-        gaTrackingId: 'G-XXXXXXXXXX',
-        // Mixpanel (optional)
-        mixpanelToken: null,
     },
 
     // Social Links
@@ -206,7 +196,7 @@ const CONFIG = {
 
 // Freeze config to prevent accidental modifications
 Object.freeze(CONFIG);
-Object.freeze(CONFIG.auth0);
+Object.freeze(CONFIG.google);
 Object.freeze(CONFIG.api);
 Object.freeze(CONFIG.stripe);
 Object.freeze(CONFIG.portal);

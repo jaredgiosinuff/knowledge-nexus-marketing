@@ -4,11 +4,12 @@ Static marketing website for Knowledge Nexus, designed for S3 hosting with Cloud
 
 ## Features
 
-- **OAuth Integration**: Auth0 SPA SDK for authentication
+- **Google OAuth**: Direct Google Sign-In (no third-party auth service needed)
 - **Subscription-Aware**: Shows user's current plan, redirects to portal
 - **Stripe Integration**: Checkout flow for paid plans
 - **Fully Static**: No server required, hosts on S3
 - **Responsive**: Works on all devices
+- **Invite-Only Support**: Works with backend's invite system
 
 ## Project Structure
 
@@ -30,19 +31,25 @@ knowledge-nexus-marketing/
 
 Before deploying, update `js/config.js` with your values:
 
-### Auth0 Setup
+### Google OAuth Setup
 
-1. Create an Auth0 application (Single Page Application)
-2. Configure allowed callback URLs, logout URLs, and origins
-3. Update `config.js`:
+Your backend already has Google OAuth configured. The marketing site uses the same credentials.
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Navigate to APIs & Services → Credentials
+3. Find your OAuth 2.0 Client ID (or create one for "Web application")
+4. Add authorized JavaScript origins:
+   - `http://localhost:8000` (local dev)
+   - `https://your-domain.com` (production)
+5. Update `config.js`:
 
 ```javascript
-auth0: {
-    domain: 'YOUR_AUTH0_DOMAIN.auth0.com',
-    clientId: 'YOUR_AUTH0_CLIENT_ID',
-    audience: 'https://api.knowledge-nexus.io',
+google: {
+    clientId: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
 }
 ```
+
+**Note**: The backend exposes `/api/auth/google/client-id` which the frontend will auto-fetch, so you may not need to hardcode it.
 
 ### Stripe Setup
 
@@ -144,11 +151,16 @@ export CLOUDFRONT_DIST_ID="E1234567890"
 
 ## Auth Flow
 
-1. User clicks "Sign In" → Auth0 login page
-2. After login, redirected back with auth code
-3. Auth0 SDK exchanges code for tokens
-4. User info displayed ("Welcome, Name!")
-5. "Enter Portal" button redirects to app with token
+1. User clicks "Sign In" → Google Sign-In popup appears
+2. User authenticates with Google → receives ID token (credential)
+3. Frontend POSTs credential to `/api/auth/google`
+4. Backend verifies token with Google, creates/finds user
+5. Backend returns JWT access/refresh tokens + user info
+6. Frontend stores tokens in localStorage
+7. User info displayed ("Welcome, Name!")
+8. "Enter Portal" button redirects to app
+
+**Invite-Only Mode**: If user is not in the system and has no invite, the backend returns 403. The frontend displays an appropriate message.
 
 ## Stripe Flow
 
