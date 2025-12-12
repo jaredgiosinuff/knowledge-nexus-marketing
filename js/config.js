@@ -9,13 +9,13 @@ const CONFIG = {
     // Google OAuth Configuration
     // Get your client ID from Google Cloud Console -> APIs & Services -> Credentials
     google: {
-        clientId: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
+        clientId: '56164383352-gn95o0d7qea4edg51afkmqn958ahnu1p.apps.googleusercontent.com',
     },
 
     // API Configuration
     api: {
         // Base URL for the Knowledge Nexus API
-        baseUrl: 'https://api.knowledge-nexus.io',
+        baseUrl: 'https://api.knowledgenexus.ai',
         // For local development:
         // baseUrl: 'http://localhost:8080',
 
@@ -33,7 +33,7 @@ const CONFIG = {
 
     // Stripe Configuration
     stripe: {
-        publishableKey: 'pk_test_YOUR_STRIPE_PUBLISHABLE_KEY',
+        publishableKey: 'pk_live_51Qw5vCBCBTjCJoT9VPwYyvuUNl89ZjKKxTwA0LEdPIfswQM6RY46AMY9XhiCt7DFuY5HO9bEkQXqGcZG9llwS1bG00H3aB7ZpB',
         // Price IDs for each tier (from Stripe Dashboard)
         priceIds: {
             personal: {
@@ -62,7 +62,7 @@ const CONFIG = {
     // Portal Configuration
     portal: {
         // URL to redirect authenticated users to the main application
-        url: 'https://app.knowledge-nexus.io',
+        url: 'https://app.knowledgenexus.ai',
         // For local development:
         // url: 'http://localhost:3000',
     },
@@ -80,16 +80,16 @@ const CONFIG = {
     // Social Links
     social: {
         twitter: 'https://twitter.com/knowledgenexus',
-        github: 'https://github.com/knowledge-nexus',
-        linkedin: 'https://linkedin.com/company/knowledge-nexus',
-        discord: 'https://discord.gg/knowledge-nexus',
+        github: 'https://github.com/jaredgiosinuff/knowledge-nexus',
+        linkedin: 'https://linkedin.com/company/knowledgenexus',
+        discord: 'https://discord.gg/knowledgenexus',
     },
 
     // Contact Information
     contact: {
-        sales: 'sales@knowledge-nexus.io',
-        support: 'support@knowledge-nexus.io',
-        enterprise: 'enterprise@knowledge-nexus.io',
+        sales: 'sales@knowledgenexus.ai',
+        support: 'support@knowledgenexus.ai',
+        enterprise: 'enterprise@knowledgenexus.ai',
     },
 
     // Tier Information (for UI display)
