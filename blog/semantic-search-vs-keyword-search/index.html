@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Search vs Keyword Search: Why Context Matters | Knowledge Nexus</title>
+    <meta name="description" content="Understand the difference between semantic search and keyword search. Learn how AI-powered semantic search finds what you mean, not just what you type.">
+    <meta name="keywords" content="semantic search, keyword search, AI search, natural language search, vector search, search comparison">
+    <link rel="canonical" href="https://knowledgenexus.io/blog/semantic-search-vs-keyword-search/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://knowledgenexus.io/blog/semantic-search-vs-keyword-search/">
+    <meta property="og:title" content="Semantic Search vs Keyword Search: Why Context Matters">
+    <meta property="og:description" content="Understand the difference between semantic search and keyword search.">
+    <meta property="og:image" content="https://knowledgenexus.io/images/og-blog.png">
+    <meta property="article:published_time" content="2024-12-10T00:00:00Z">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <meta name="theme-color" content="#2563eb">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#2563eb', secondary: '#7c3aed' }}}}
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Semantic Search vs Keyword Search: Why Context Matters",
+        "datePublished": "2024-12-10",
+        "author": {"@type": "Organization", "name": "Knowledge Nexus"},
+        "publisher": {"@type": "Organization", "name": "Knowledge Nexus"}
+    }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">K</span>
+                    </div>
+                    <span class="font-bold text-xl">Knowledge Nexus</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#features" class="text-gray-600 hover:text-primary transition">Features</a>
+                    <a href="/#pricing" class="text-gray-600 hover:text-primary transition">Pricing</a>
+                    <a href="/blog/" class="text-primary font-medium">Blog</a>
+                </div>
+                <a href="/#pricing" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20 px-4 bg-white border-b border-gray-200">
+        <div class="max-w-3xl mx-auto py-4">
+            <nav class="text-sm text-gray-500">
+                <a href="/" class="hover:text-primary">Home</a> /
+                <a href="/blog/" class="hover:text-primary">Blog</a> /
+                <span class="text-gray-900">Semantic Search vs Keyword Search</span>
+            </nav>
+        </div>
+    </div>
+
+    <article class="py-12 px-4">
+        <div class="max-w-3xl mx-auto">
+            <header class="mb-12">
+                <div class="flex items-center space-x-2 text-sm text-gray-500 mb-4">
+                    <span class="bg-secondary/10 text-secondary px-2 py-1 rounded">Guide</span>
+                    <span>December 10, 2024</span>
+                    <span>6 min read</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Semantic Search vs Keyword Search: Why Context Matters</h1>
+                <p class="text-xl text-gray-600">Discover why semantic search finds what you mean, not just what you type, and how it's transforming document retrieval.</p>
+            </header>
+
+            <div class="bg-gradient-to-br from-secondary to-pink-500 h-64 rounded-2xl mb-12"></div>
+
+            <div class="prose prose-lg max-w-none">
+                <h2 class="text-2xl font-bold mt-8 mb-4">The Problem with Keyword Search</h2>
+                <p class="mb-4">Traditional keyword search has been the backbone of document retrieval for decades. You type words, the system finds exact matches. Simple, right? But this approach has fundamental limitations that become increasingly frustrating as your document collection grows.</p>
+
+                <p class="mb-4">Consider searching for "automobile maintenance tips" in a document library. Keyword search will miss documents about "car repair guides" or "vehicle servicing advice" - even though they contain exactly the information you need. The words are different, so the matches fail.</p>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">Enter Semantic Search</h2>
+                <p class="mb-4"><strong>Semantic search</strong> understands meaning, not just words. It uses AI to convert text into mathematical representations (embeddings) that capture the conceptual meaning of content. When you search, your query is also converted to an embedding, and the system finds documents with similar meanings.</p>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 my-8">
+                    <h3 class="font-semibold mb-4">Quick Comparison</h3>
+                    <table class="w-full text-sm">
+                        <tr class="border-b"><td class="py-2 font-medium">Query</td><td class="py-2">Keyword Search</td><td class="py-2">Semantic Search</td></tr>
+                        <tr class="border-b"><td class="py-2">"car problems"</td><td class="py-2">Only "car" + "problems"</td><td class="py-2">Vehicle issues, auto trouble, automotive faults</td></tr>
+                        <tr class="border-b"><td class="py-2">"happy employees"</td><td class="py-2">Exact phrase only</td><td class="py-2">Staff satisfaction, worker morale, team engagement</td></tr>
+                        <tr><td class="py-2">"reduce costs"</td><td class="py-2">Documents with those words</td><td class="py-2">Budget optimization, expense management, savings strategies</td></tr>
+                    </table>
+                </div>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">How Semantic Search Works</h2>
+                <p class="mb-4">The magic happens through <strong>vector embeddings</strong>. Each piece of text is converted into a high-dimensional vector (think: a list of hundreds of numbers) that represents its meaning. Similar concepts end up with similar vectors, regardless of the exact words used.</p>
+
+                <ol class="list-decimal list-inside space-y-2 mb-6">
+                    <li>Documents are processed through an embedding model</li>
+                    <li>Each document becomes a vector stored in a vector database</li>
+                    <li>Your search query is converted to a vector</li>
+                    <li>The system finds vectors closest to your query</li>
+                    <li>Results are ranked by semantic similarity</li>
+                </ol>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">When to Use Each Approach</h2>
+
+                <h3 class="text-xl font-semibold mt-8 mb-3">Keyword Search Works Best For:</h3>
+                <ul class="list-disc list-inside space-y-2 mb-6">
+                    <li>Exact phrase matching (product codes, names)</li>
+                    <li>Boolean queries with AND/OR/NOT</li>
+                    <li>When you know the exact terminology used</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold mt-8 mb-3">Semantic Search Excels At:</h3>
+                <ul class="list-disc list-inside space-y-2 mb-6">
+                    <li>Natural language questions</li>
+                    <li>Finding conceptually related content</li>
+                    <li>Cross-language retrieval</li>
+                    <li>Discovering content you didn't know existed</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">The Best of Both Worlds: Hybrid Search</h2>
+                <p class="mb-4">Modern systems like Knowledge Nexus combine both approaches. Semantic search finds conceptually relevant documents, while keyword matching ensures exact terms are weighted appropriately. This hybrid approach delivers the best results across all query types.</p>
+
+                <div class="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 text-white text-center my-12">
+                    <h3 class="text-2xl font-bold mb-4">Experience Semantic Search</h3>
+                    <p class="mb-6 opacity-90">Try asking questions in natural language and see the difference.</p>
+                    <a href="/#pricing" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Start Free</a>
+                </div>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">Conclusion</h2>
+                <p class="mb-4">Semantic search represents a fundamental shift in how we find information. Instead of trying to guess the exact words in a document, you can simply describe what you're looking for in your own words. The AI handles the translation between your intent and the content that matches it.</p>
+            </div>
+
+            <div class="border-t border-gray-200 mt-12 pt-8">
+                <h3 class="font-semibold mb-6">Related Articles</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <a href="/blog/what-is-rag/" class="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-lg transition">
+                        <h4 class="font-semibold">What is RAG?</h4>
+                        <p class="text-sm text-gray-600 mt-2">Complete guide to Retrieval-Augmented Generation.</p>
+                    </a>
+                    <a href="/blog/enterprise-knowledge-management-2025/" class="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-lg transition">
+                        <h4 class="font-semibold">Enterprise Knowledge Management in 2025</h4>
+                        <p class="text-sm text-gray-600 mt-2">AI-first strategies for organizations.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

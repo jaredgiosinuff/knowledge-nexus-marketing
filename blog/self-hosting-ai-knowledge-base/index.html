@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Hosting Your AI Knowledge Base: A Complete Guide | Knowledge Nexus</title>
+    <meta name="description" content="Step-by-step guide to deploying Knowledge Nexus on your own infrastructure with Docker. Full control, complete privacy, your data never leaves your servers.">
+    <meta name="keywords" content="self-hosted knowledge base, on-premise AI, docker deployment, private AI, data sovereignty, self-host RAG">
+    <link rel="canonical" href="https://knowledgenexus.io/blog/self-hosting-ai-knowledge-base/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Self-Hosting Your AI Knowledge Base: A Complete Guide">
+    <meta property="og:image" content="https://knowledgenexus.io/images/og-blog.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#2563eb', secondary: '#7c3aed' }}}}</script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">K</span>
+                    </div>
+                    <span class="font-bold text-xl">Knowledge Nexus</span>
+                </a>
+                <a href="/#enterprise" class="bg-primary text-white px-4 py-2 rounded-lg">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="pt-24 pb-12 px-4">
+        <div class="max-w-3xl mx-auto">
+            <header class="mb-12">
+                <div class="flex items-center space-x-2 text-sm text-gray-500 mb-4">
+                    <span class="bg-gray-200 text-gray-700 px-2 py-1 rounded">Tutorial</span>
+                    <span>December 2, 2024</span>
+                    <span>10 min read</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Self-Hosting Your AI Knowledge Base: A Complete Guide</h1>
+                <p class="text-xl text-gray-600">Step-by-step guide to deploying Knowledge Nexus on your own infrastructure with Docker.</p>
+            </header>
+
+            <div class="bg-gradient-to-br from-gray-700 to-gray-900 h-64 rounded-2xl mb-12"></div>
+
+            <div class="prose prose-lg max-w-none">
+                <h2 class="text-2xl font-bold mt-8 mb-4">Why Self-Host?</h2>
+                <p class="mb-4">Self-hosting gives you complete control over your data and infrastructure. Your documents never leave your servers, you choose your own LLM providers, and you can customize everything to your needs.</p>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 my-8">
+                    <h3 class="font-semibold mb-3">Benefits of Self-Hosting</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>&#10003; Complete data sovereignty</li>
+                        <li>&#10003; Compliance with strict regulations (HIPAA, GDPR, etc.)</li>
+                        <li>&#10003; Customizable LLM providers (Ollama, vLLM, OpenAI, Anthropic)</li>
+                        <li>&#10003; Air-gapped deployment option</li>
+                        <li>&#10003; No per-query costs after initial setup</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">Prerequisites</h2>
+                <ul class="list-disc list-inside space-y-2 mb-6">
+                    <li>Docker and Docker Compose installed</li>
+                    <li>Minimum 8GB RAM (16GB+ recommended)</li>
+                    <li>50GB+ storage for documents and embeddings</li>
+                    <li>Optional: NVIDIA GPU for local LLM inference</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">Quick Start</h2>
+                <div class="bg-gray-900 rounded-xl p-6 font-mono text-sm text-gray-300 my-6 overflow-x-auto">
+                    <div class="text-gray-500"># Clone the repository</div>
+                    <div class="text-green-400">$ git clone https://github.com/knowledgenexus/knowledge-nexus.git</div>
+                    <div class="text-green-400">$ cd knowledge-nexus</div>
+                    <div class="mt-4 text-gray-500"># Copy environment template</div>
+                    <div class="text-green-400">$ cp .env.example .env</div>
+                    <div class="mt-4 text-gray-500"># Start all services</div>
+                    <div class="text-green-400">$ docker-compose up -d</div>
+                    <div class="mt-4 text-gray-500"># Access at http://localhost:8080</div>
+                </div>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">Architecture Overview</h2>
+                <p class="mb-4">Knowledge Nexus consists of several microservices:</p>
+
+                <div class="grid gap-4 my-8">
+                    <div class="bg-white border rounded-xl p-4">
+                        <h3 class="font-semibold">API Gateway</h3>
+                        <p class="text-sm text-gray-600">Routes requests, handles authentication, rate limiting</p>
+                    </div>
+                    <div class="bg-white border rounded-xl p-4">
+                        <h3 class="font-semibold">Document Processing</h3>
+                        <p class="text-sm text-gray-600">Parses PDFs, extracts text, generates embeddings</p>
+                    </div>
+                    <div class="bg-white border rounded-xl p-4">
+                        <h3 class="font-semibold">Vector Database (Qdrant)</h3>
+                        <p class="text-sm text-gray-600">Stores and searches document embeddings</p>
+                    </div>
+                    <div class="bg-white border rounded-xl p-4">
+                        <h3 class="font-semibold">LLM Service</h3>
+                        <p class="text-sm text-gray-600">Handles chat completions, can use local or cloud LLMs</p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">Configuring Your LLM</h2>
+                <p class="mb-4">Knowledge Nexus supports multiple LLM backends:</p>
+
+                <h3 class="text-xl font-semibold mt-8 mb-3">Option 1: Ollama (Local, Free)</h3>
+                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-gray-300 my-4">
+                    <div class="text-cyan-400">LLM_PROVIDER=ollama</div>
+                    <div class="text-cyan-400">OLLAMA_BASE_URL=http://ollama:11434</div>
+                    <div class="text-cyan-400">OLLAMA_MODEL=llama3.2</div>
+                </div>
+
+                <h3 class="text-xl font-semibold mt-8 mb-3">Option 2: OpenAI API</h3>
+                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-gray-300 my-4">
+                    <div class="text-cyan-400">LLM_PROVIDER=openai</div>
+                    <div class="text-cyan-400">OPENAI_API_KEY=sk-...</div>
+                    <div class="text-cyan-400">OPENAI_MODEL=gpt-4-turbo</div>
+                </div>
+
+                <h3 class="text-xl font-semibold mt-8 mb-3">Option 3: Anthropic Claude</h3>
+                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-gray-300 my-4">
+                    <div class="text-cyan-400">LLM_PROVIDER=anthropic</div>
+                    <div class="text-cyan-400">ANTHROPIC_API_KEY=sk-ant-...</div>
+                    <div class="text-cyan-400">ANTHROPIC_MODEL=claude-3-sonnet</div>
+                </div>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">Production Considerations</h2>
+                <ul class="list-disc list-inside space-y-2 mb-6">
+                    <li><strong>SSL/TLS:</strong> Use a reverse proxy (nginx, Traefik) with Let's Encrypt</li>
+                    <li><strong>Backups:</strong> Schedule regular backups of PostgreSQL and Qdrant data</li>
+                    <li><strong>Monitoring:</strong> Enable Prometheus metrics endpoint</li>
+                    <li><strong>Scaling:</strong> Run multiple replicas behind a load balancer</li>
+                </ul>
+
+                <div class="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 text-white text-center my-12">
+                    <h3 class="text-2xl font-bold mb-4">Need Help Deploying?</h3>
+                    <p class="mb-6 opacity-90">Enterprise customers get dedicated support for on-premise deployments.</p>
+                    <a href="/#enterprise" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Contact Sales</a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 mt-12 pt-8">
+                <a href="/blog/" class="text-primary hover:underline">&larr; Back to Blog</a>
+            </div>
+        </div>
+    </article>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

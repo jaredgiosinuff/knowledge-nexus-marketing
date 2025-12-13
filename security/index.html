@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security | Knowledge Nexus</title>
+    <meta name="description" content="Knowledge Nexus security practices. Learn how we protect your data with encryption, compliance, and secure infrastructure.">
+    <link rel="canonical" href="https://knowledgenexus.io/security/">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#2563eb', secondary: '#7c3aed' }}}}</script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">K</span>
+                    </div>
+                    <span class="font-bold text-xl">Knowledge Nexus</span>
+                </a>
+                <a href="/#pricing" class="bg-primary text-white px-4 py-2 rounded-lg">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16 px-4">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl font-bold mb-4">Security</h1>
+            <p class="text-xl text-gray-600 mb-8">Your data security is our top priority. Here's how we protect your information.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-12">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">&#128274;</div>
+                    <div class="font-semibold">SOC 2 Type II</div>
+                    <div class="text-sm text-gray-500">Certified</div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">&#127973;</div>
+                    <div class="font-semibold">HIPAA</div>
+                    <div class="text-sm text-gray-500">Compliant</div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">&#127466;&#127482;</div>
+                    <div class="font-semibold">GDPR</div>
+                    <div class="text-sm text-gray-500">Compliant</div>
+                </div>
+            </div>
+
+            <div class="prose prose-lg max-w-none">
+                <h2 class="text-2xl font-bold mt-8 mb-4">Encryption</h2>
+                <div class="bg-white border border-gray-200 rounded-xl p-6 my-6">
+                    <h3 class="font-semibold mb-3">Data at Rest</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>&#10003; AES-256 encryption for all stored documents</li>
+                        <li>&#10003; Encrypted database backups</li>
+                        <li>&#10003; Encrypted vector embeddings</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-xl p-6 my-6">
+                    <h3 class="font-semibold mb-3">Data in Transit</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>&#10003; TLS 1.3 for all connections</li>
+                        <li>&#10003; HTTPS enforced everywhere</li>
+                        <li>&#10003; Certificate pinning in mobile apps</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-2xl font-bold mt-8 mb-4">Infrastructure Security</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Hosted on SOC 2 certified cloud infrastructure</li>
+                    <li>Network isolation with VPCs and firewalls</li>
+                    <li>DDoS protection and WAF</li>
+                    <li>Regular vulnerability scanning</li>
+                    <li>24/7 infrastructure monitoring</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold mt-8 mb-4">Access Control</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Role-based access control (RBAC)</li>
+                    <li>Multi-factor authentication available</li>
+                    <li>SSO/SAML for enterprise accounts</li>
+                    <li>Audit logs for all access</li>
+                    <li>Automatic session timeout</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold mt-8 mb-4">AI Model Security</h2>
+                <div class="bg-green-50 border border-green-200 rounded-xl p-4 my-4">
+                    <p class="text-green-800"><strong>Your data is never used for training.</strong> We do not use customer documents or queries to train AI models. Your information is used solely to provide the service to you.</p>
+                </div>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>API calls to AI providers use encrypted channels</li>
+                    <li>No persistent storage of queries at AI providers</li>
+                    <li>Self-hosted option eliminates third-party AI access</li>
+                    <li>Local LLM support for air-gapped deployments</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold mt-8 mb-4">Penetration Testing</h2>
+                <p>We conduct regular penetration tests through independent security firms. Our last pentest was completed in Q4 2024 with no critical findings.</p>
+
+                <h2 class="text-2xl font-bold mt-8 mb-4">Incident Response</h2>
+                <p>We maintain a comprehensive incident response plan:</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>24/7 security monitoring</li>
+                    <li>Defined escalation procedures</li>
+                    <li>Customer notification within 72 hours of confirmed breach</li>
+                    <li>Post-incident review and remediation</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold mt-8 mb-4">Bug Bounty</h2>
+                <p>We welcome responsible disclosure of security vulnerabilities. If you discover a security issue, please report it to:</p>
+                <p class="mt-2"><strong>Email:</strong> security@knowledgenexus.io</p>
+                <p class="mt-2">We commit to acknowledging reports within 48 hours and providing updates on remediation progress.</p>
+
+                <h2 class="text-2xl font-bold mt-8 mb-4">Questions?</h2>
+                <p>For security inquiries or to request our SOC 2 report, contact:</p>
+                <p class="mt-2"><strong>Email:</strong> security@knowledgenexus.io</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

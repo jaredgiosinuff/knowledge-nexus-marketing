@@ -80,6 +80,20 @@
         <priority>0.7</priority>
     </url>
 
+    <url>
+        <loc>https://knowledgenexus.io/blog/ai-research-assistant-guide/</loc>
+        <lastmod>2024-11-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://knowledgenexus.io/blog/privacy-first-ai/</loc>
+        <lastmod>2024-11-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
     <!-- Documentation -->
     <url>
         <loc>https://docs.knowledgenexus.io/</loc>
