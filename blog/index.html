@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Knowledge Nexus | AI Knowledge Management Insights</title>
+    <meta name="description" content="Learn about AI-powered knowledge management, semantic search, RAG technology, and best practices for organizing your digital knowledge.">
+    <meta name="keywords" content="knowledge management blog, AI search, RAG technology, semantic search, document management, enterprise search">
+    <link rel="canonical" href="https://knowledgenexus.io/blog/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://knowledgenexus.io/blog/">
+    <meta property="og:title" content="Knowledge Nexus Blog - AI Knowledge Management Insights">
+    <meta property="og:description" content="Learn about AI-powered knowledge management, semantic search, RAG technology, and best practices.">
+    <meta property="og:image" content="https://knowledgenexus.io/images/og-blog.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Knowledge Nexus Blog">
+    <meta name="twitter:description" content="AI-powered knowledge management insights and best practices.">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#7c3aed',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Blog Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Knowledge Nexus Blog",
+        "description": "Insights on AI-powered knowledge management, semantic search, and RAG technology",
+        "url": "https://knowledgenexus.io/blog/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Knowledge Nexus",
+            "logo": "https://knowledgenexus.io/images/logo.png"
+        }
+    }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">K</span>
+                        </div>
+                        <span class="font-bold text-xl">Knowledge Nexus</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#features" class="text-gray-600 hover:text-primary transition">Features</a>
+                    <a href="/#pricing" class="text-gray-600 hover:text-primary transition">Pricing</a>
+                    <a href="/blog/" class="text-primary font-medium">Blog</a>
+                    <a href="https://docs.knowledgenexus.io" class="text-gray-600 hover:text-primary transition" rel="noopener">Docs</a>
+                </div>
+                <a href="/#pricing" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-16 px-4 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Knowledge Nexus Blog</h1>
+            <p class="text-xl text-gray-600">Insights on AI-powered knowledge management, semantic search, and building smarter workflows</p>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Featured Post -->
+            <div class="mb-16">
+                <h2 class="text-sm font-semibold text-primary uppercase tracking-wide mb-6">Featured Article</h2>
+                <a href="/blog/what-is-rag/" class="block bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="md:flex">
+                        <div class="md:w-2/5 bg-gradient-to-br from-primary to-secondary h-48 md:h-auto"></div>
+                        <div class="p-8 md:w-3/5">
+                            <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                                <span class="bg-primary/10 text-primary px-2 py-1 rounded">Technology</span>
+                                <span>Dec 13, 2024</span>
+                                <span>8 min read</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition">What is RAG? A Complete Guide to Retrieval-Augmented Generation</h3>
+                            <p class="text-gray-600 mb-4">Learn how RAG technology is transforming AI applications by combining the power of large language models with your own data for accurate, contextual responses.</p>
+                            <span class="text-primary font-medium">Read more &rarr;</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Recent Posts -->
+            <h2 class="text-sm font-semibold text-primary uppercase tracking-wide mb-6">Recent Articles</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Post 1 -->
+                <a href="/blog/semantic-search-vs-keyword-search/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="h-40 bg-gradient-to-br from-secondary to-pink-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                            <span class="bg-secondary/10 text-secondary px-2 py-1 rounded">Guide</span>
+                            <span>Dec 10, 2024</span>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Semantic Search vs Keyword Search: Why Context Matters</h3>
+                        <p class="text-gray-600 text-sm">Discover why semantic search finds what you mean, not just what you type, and how it transforms document retrieval.</p>
+                    </div>
+                </a>
+
+                <!-- Post 2 -->
+                <a href="/blog/building-family-knowledge-base/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="h-40 bg-gradient-to-br from-green-500 to-teal-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded">Tips</span>
+                            <span>Dec 8, 2024</span>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Building a Family Knowledge Base: Recipes, Memories, and More</h3>
+                        <p class="text-gray-600 text-sm">How families are using AI to preserve and search generations of recipes, photos, and family history.</p>
+                    </div>
+                </a>
+
+                <!-- Post 3 -->
+                <a href="/blog/enterprise-knowledge-management-2025/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="h-40 bg-gradient-to-br from-orange-500 to-red-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded">Enterprise</span>
+                            <span>Dec 5, 2024</span>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Enterprise Knowledge Management in 2025: AI-First Strategies</h3>
+                        <p class="text-gray-600 text-sm">How leading organizations are deploying AI to unlock institutional knowledge and boost productivity.</p>
+                    </div>
+                </a>
+
+                <!-- Post 4 -->
+                <a href="/blog/self-hosting-ai-knowledge-base/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="h-40 bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                            <span class="bg-gray-200 text-gray-700 px-2 py-1 rounded">Tutorial</span>
+                            <span>Dec 2, 2024</span>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Self-Hosting Your AI Knowledge Base: A Complete Guide</h3>
+                        <p class="text-gray-600 text-sm">Step-by-step guide to deploying Knowledge Nexus on your own infrastructure with Docker.</p>
+                    </div>
+                </a>
+
+                <!-- Post 5 -->
+                <a href="/blog/ai-research-assistant-guide/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="h-40 bg-gradient-to-br from-cyan-500 to-blue-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                            <span class="bg-cyan-100 text-cyan-700 px-2 py-1 rounded">Research</span>
+                            <span>Nov 28, 2024</span>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Using AI as Your Research Assistant: Workflows That Work</h3>
+                        <p class="text-gray-600 text-sm">Practical workflows for academics and professionals to accelerate research with AI agents.</p>
+                    </div>
+                </a>
+
+                <!-- Post 6 -->
+                <a href="/blog/privacy-first-ai/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="h-40 bg-gradient-to-br from-pink-500 to-rose-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                            <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded">Security</span>
+                            <span>Nov 25, 2024</span>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Privacy-First AI: Keeping Your Data Yours</h3>
+                        <p class="text-gray-600 text-sm">How to leverage AI for knowledge management without sacrificing privacy or data sovereignty.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="mt-16 bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 md:p-12 text-white text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Stay Updated</h2>
+                <p class="text-lg opacity-90 mb-6">Get the latest insights on AI-powered knowledge management delivered to your inbox.</p>
+                <form class="max-w-md mx-auto flex gap-3">
+                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white">
+                    <button type="submit" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">K</span>
+                        </div>
+                        <span class="font-bold text-xl text-white">Knowledge Nexus</span>
+                    </div>
+                    <p class="text-sm">Your AI-powered knowledge platform.</p>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-white mb-4">Product</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="/#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="/#enterprise" class="hover:text-white transition">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-white mb-4">Resources</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://docs.knowledgenexus.io" class="hover:text-white transition" rel="noopener">Documentation</a></li>
+                        <li><a href="/blog/" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="https://github.com/knowledgenexus" class="hover:text-white transition" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-white mb-4">Legal</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/privacy/" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="hover:text-white transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+                <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

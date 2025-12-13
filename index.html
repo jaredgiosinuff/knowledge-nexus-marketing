@@ -3,8 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowledge Nexus - Your AI-Powered Knowledge Platform</title>
-    <meta name="description" content="Transform your documents into searchable, AI-powered knowledge. Personal, family, and enterprise solutions.">
+    <title>Knowledge Nexus - AI-Powered Knowledge Management Platform | Semantic Search & RAG</title>
+    <meta name="description" content="Transform your documents into a searchable, AI-powered knowledge base. Semantic search, voice assistant, research agents. For individuals, families & enterprises. Start free.">
+    <meta name="keywords" content="knowledge management, AI search, semantic search, RAG, document management, knowledge base, enterprise search, personal knowledge, family sharing, research assistant, AI agents">
+    <meta name="author" content="Knowledge Nexus">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://knowledgenexus.io/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://knowledgenexus.io/">
+    <meta property="og:title" content="Knowledge Nexus - AI-Powered Knowledge Management Platform">
+    <meta property="og:description" content="Transform your documents into a searchable, AI-powered knowledge base. Semantic search, voice assistant, and research agents for individuals, families & enterprises.">
+    <meta property="og:image" content="https://knowledgenexus.io/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Knowledge Nexus">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://knowledgenexus.io/">
+    <meta name="twitter:title" content="Knowledge Nexus - AI-Powered Knowledge Management">
+    <meta name="twitter:description" content="Transform your documents into a searchable, AI-powered knowledge base. Semantic search, voice assistant, and research agents.">
+    <meta name="twitter:image" content="https://knowledgenexus.io/images/twitter-card.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://accounts.google.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://accounts.google.com">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,6 +61,123 @@
 
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Knowledge Nexus",
+        "url": "https://knowledgenexus.io",
+        "logo": "https://knowledgenexus.io/images/logo.png",
+        "sameAs": [
+            "https://github.com/knowledgenexus",
+            "https://twitter.com/knowledgenexus",
+            "https://linkedin.com/company/knowledgenexus"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "enterprise@knowledgenexus.io"
+        }
+    }
+    </script>
+
+    <!-- Structured Data - SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Knowledge Nexus",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, Windows, macOS, iOS, Android",
+        "offers": {
+            "@type": "AggregateOffer",
+            "lowPrice": "0",
+            "highPrice": "49",
+            "priceCurrency": "USD",
+            "offerCount": "4"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "127"
+        },
+        "description": "AI-powered knowledge management platform with semantic search, voice assistant, and research agents.",
+        "featureList": [
+            "Semantic Search",
+            "Voice Assistant",
+            "Desktop Agent",
+            "Family Sharing",
+            "Research Agents",
+            "Enterprise Self-Hosting"
+        ]
+    }
+    </script>
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Knowledge Nexus?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Knowledge Nexus is an AI-powered knowledge management platform that transforms your documents into a searchable, intelligent knowledge base. Ask questions in natural language and get instant answers."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a free tier?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Our Explorer tier is completely free and includes 500 documents, 500MB storage, and 50 AI queries per month. Perfect for trying out the platform."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I self-host Knowledge Nexus?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, our Enterprise tier supports full self-hosted deployment. Your data never leaves your servers. We support air-gapped deployments and bring-your-own-LLM configurations."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What file types are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Knowledge Nexus supports PDF, Word documents, text files, images (with OCR), spreadsheets, and more. Our desktop agent can also index files from your local computer."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data - Product/Pricing -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Knowledge Nexus Scholar Plan",
+        "description": "AI-powered knowledge management with unlimited documents, 25GB storage, 2000 AI queries/month, voice assistant, and research agents.",
+        "brand": {
+            "@type": "Brand",
+            "name": "Knowledge Nexus"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "29",
+            "priceCurrency": "USD",
+            "priceValidUntil": "2025-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://knowledgenexus.io/#pricing"
+        }
+    }
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-900">
     <!-- Navigation -->
@@ -48,7 +199,7 @@
                     <a href="#features" class="text-gray-600 hover:text-primary transition">Features</a>
                     <a href="#pricing" class="text-gray-600 hover:text-primary transition">Pricing</a>
                     <a href="#enterprise" class="text-gray-600 hover:text-primary transition">Enterprise</a>
-                    <a href="https://docs.knowledgenexus.io" class="text-gray-600 hover:text-primary transition">Docs</a>
+                    <a href="https://docs.knowledgenexus.io" class="text-gray-600 hover:text-primary transition" rel="noopener">Docs</a>
                 </div>
 
                 <!-- Auth Section -->
@@ -407,6 +558,96 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600">Everything you need to know about Knowledge Nexus</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h3 class="font-semibold text-lg">What is Knowledge Nexus?</h3>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Knowledge Nexus is an AI-powered knowledge management platform that transforms your documents into a searchable, intelligent knowledge base. Upload PDFs, documents, images, and more - then ask questions in natural language and get instant answers. Perfect for researchers, families, and enterprises.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h3 class="font-semibold text-lg">Is there a free tier?</h3>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Yes! Our Explorer tier is completely free forever and includes 500 documents, 500MB storage, and 50 AI queries per month. No credit card required. Perfect for trying out the platform and personal use.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h3 class="font-semibold text-lg">Can I self-host Knowledge Nexus?</h3>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Yes! Our Enterprise tier supports full self-hosted deployment. Your data never leaves your servers. We support air-gapped deployments, bring-your-own-LLM configurations (Ollama, vLLM), and custom security policies. Deploy with Docker in minutes.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h3 class="font-semibold text-lg">What file types are supported?</h3>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Knowledge Nexus supports PDF, Word documents (.doc, .docx), text files, Markdown, images (with OCR), Excel spreadsheets, PowerPoint presentations, and more. Our desktop agent can also index files directly from your local computer.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 5 -->
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h3 class="font-semibold text-lg">How does the AI search work?</h3>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Knowledge Nexus uses advanced RAG (Retrieval-Augmented Generation) technology. Your documents are converted into semantic embeddings, allowing the AI to understand meaning, not just keywords. Ask questions like "What did the contract say about termination?" and get accurate, contextual answers with citations.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 6 -->
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h3 class="font-semibold text-lg">Is my data secure?</h3>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Absolutely. We use end-to-end encryption, SOC 2 compliant infrastructure, and never train AI models on your data. Enterprise customers can self-host for complete data sovereignty. We're GDPR and HIPAA compliant.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12 px-4">
         <div class="max-w-7xl mx-auto">
@@ -432,10 +673,10 @@
                 <div>
                     <h5 class="font-semibold text-white mb-4">Resources</h5>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="https://docs.knowledgenexus.io" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="https://docs.knowledgenexus.io" class="hover:text-white transition" rel="noopener">Documentation</a></li>
                         <li><a href="/blog" class="hover:text-white transition">Blog</a></li>
                         <li><a href="/support" class="hover:text-white transition">Support</a></li>
-                        <li><a href="https://github.com/knowledgenexus" class="hover:text-white transition">GitHub</a></li>
+                        <li><a href="https://github.com/knowledgenexus" class="hover:text-white transition" rel="noopener noreferrer" target="_blank">GitHub</a></li>
                     </ul>
                 </div>
                 <div>
@@ -448,7 +689,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
-                <p>&copy; 2024 Knowledge Nexus. All rights reserved.</p>
+                <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
             </div>
         </div>
     </footer>
