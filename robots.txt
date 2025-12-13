@@ -1,11 +1,11 @@
 # Knowledge Nexus robots.txt
-# https://knowledgenexus.io/robots.txt
+# https://knowledgenexus.ai/robots.txt
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://knowledgenexus.io/sitemap.xml
+Sitemap: https://knowledgenexus.ai/sitemap.xml
 
 # Block admin/API paths if they exist
 Disallow: /api/

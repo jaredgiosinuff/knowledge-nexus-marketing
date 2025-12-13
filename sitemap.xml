@@ -6,7 +6,7 @@
 
     <!-- Homepage -->
     <url>
-        <loc>https://knowledgenexus.io/</loc>
+        <loc>https://knowledgenexus.ai/</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
     <!-- Features section (anchor link but important for SEO) -->
     <url>
-        <loc>https://knowledgenexus.io/#features</loc>
+        <loc>https://knowledgenexus.ai/#features</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -22,7 +22,7 @@
 
     <!-- Pricing section -->
     <url>
-        <loc>https://knowledgenexus.io/#pricing</loc>
+        <loc>https://knowledgenexus.ai/#pricing</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -30,7 +30,7 @@
 
     <!-- Enterprise section -->
     <url>
-        <loc>https://knowledgenexus.io/#enterprise</loc>
+        <loc>https://knowledgenexus.ai/#enterprise</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -38,7 +38,7 @@
 
     <!-- Blog -->
     <url>
-        <loc>https://knowledgenexus.io/blog/</loc>
+        <loc>https://knowledgenexus.ai/blog/</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -46,49 +46,49 @@
 
     <!-- Blog Posts -->
     <url>
-        <loc>https://knowledgenexus.io/blog/what-is-rag/</loc>
+        <loc>https://knowledgenexus.ai/blog/what-is-rag/</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://knowledgenexus.io/blog/semantic-search-vs-keyword-search/</loc>
+        <loc>https://knowledgenexus.ai/blog/semantic-search-vs-keyword-search/</loc>
         <lastmod>2024-12-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://knowledgenexus.io/blog/building-family-knowledge-base/</loc>
+        <loc>https://knowledgenexus.ai/blog/building-family-knowledge-base/</loc>
         <lastmod>2024-12-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://knowledgenexus.io/blog/enterprise-knowledge-management-2025/</loc>
+        <loc>https://knowledgenexus.ai/blog/enterprise-knowledge-management-2025/</loc>
         <lastmod>2024-12-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://knowledgenexus.io/blog/self-hosting-ai-knowledge-base/</loc>
+        <loc>https://knowledgenexus.ai/blog/self-hosting-ai-knowledge-base/</loc>
         <lastmod>2024-12-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://knowledgenexus.io/blog/ai-research-assistant-guide/</loc>
+        <loc>https://knowledgenexus.ai/blog/ai-research-assistant-guide/</loc>
         <lastmod>2024-11-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://knowledgenexus.io/blog/privacy-first-ai/</loc>
+        <loc>https://knowledgenexus.ai/blog/privacy-first-ai/</loc>
         <lastmod>2024-11-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -96,7 +96,7 @@
 
     <!-- Documentation -->
     <url>
-        <loc>https://docs.knowledgenexus.io/</loc>
+        <loc>https://docs.knowledgenexus.ai/</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
@@ -104,21 +104,21 @@
 
     <!-- Legal pages -->
     <url>
-        <loc>https://knowledgenexus.io/privacy/</loc>
+        <loc>https://knowledgenexus.ai/privacy/</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
 
     <url>
-        <loc>https://knowledgenexus.io/terms/</loc>
+        <loc>https://knowledgenexus.ai/terms/</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
 
     <url>
-        <loc>https://knowledgenexus.io/security/</loc>
+        <loc>https://knowledgenexus.ai/security/</loc>
         <lastmod>2024-12-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
