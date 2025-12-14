@@ -23,7 +23,12 @@
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,14 +37,38 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2563eb',
-                        secondary: '#7c3aed',
+                        dark: '#0f172a',
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#06b6d4',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+    </style>
 
     <!-- Blog Schema -->
     <script type="application/ld+json">
@@ -57,26 +86,24 @@
     }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-dark text-white min-h-screen">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+    <nav class="fixed top-0 left-0 right-0 bg-dark/90 backdrop-blur-md border-b border-white/5 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="/" class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-lg">K</span>
-                        </div>
+                    <a href="/" class="flex items-center space-x-3">
+                        <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
                         <span class="font-bold text-xl">Knowledge Nexus</span>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/#features" class="text-gray-600 hover:text-primary transition">Features</a>
-                    <a href="/#pricing" class="text-gray-600 hover:text-primary transition">Pricing</a>
+                    <a href="/#features" class="text-gray-400 hover:text-white transition">Features</a>
+                    <a href="/#pricing" class="text-gray-400 hover:text-white transition">Pricing</a>
                     <a href="/blog/" class="text-primary font-medium">Blog</a>
-                    <a href="https://docs.knowledgenexus.ai" class="text-gray-600 hover:text-primary transition" rel="noopener">Docs</a>
+                    <a href="https://docs.knowledgenexus.ai" class="text-gray-400 hover:text-white transition" rel="noopener">Docs</a>
                 </div>
-                <a href="/#pricing" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">
+                <a href="/#pricing" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition">
                     Get Started
                 </a>
             </div>
@@ -84,10 +111,13 @@
     </nav>
 
     <!-- Hero -->
-    <section class="pt-32 pb-16 px-4 bg-gradient-to-b from-white to-gray-50">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Knowledge Nexus Blog</h1>
-            <p class="text-xl text-gray-600">Insights on AI-powered knowledge management, semantic search, and building smarter workflows</p>
+    <section class="pt-32 pb-16 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                Knowledge Nexus <span class="gradient-text">Blog</span>
+            </h1>
+            <p class="text-xl text-gray-400">Insights on AI-powered knowledge management, semantic search, and building smarter workflows</p>
         </div>
     </section>
 
@@ -97,18 +127,27 @@
             <!-- Featured Post -->
             <div class="mb-16">
                 <h2 class="text-sm font-semibold text-primary uppercase tracking-wide mb-6">Featured Article</h2>
-                <a href="/blog/what-is-rag/" class="block bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                <a href="/blog/what-is-rag/" class="block bg-white/5 rounded-2xl border border-white/10 overflow-hidden card-hover group">
                     <div class="md:flex">
-                        <div class="md:w-2/5 bg-gradient-to-br from-primary to-secondary h-48 md:h-auto"></div>
+                        <div class="md:w-2/5 bg-gradient-to-br from-primary to-secondary h-48 md:h-auto flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </div>
                         <div class="p-8 md:w-3/5">
-                            <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                                <span class="bg-primary/10 text-primary px-2 py-1 rounded">Technology</span>
+                            <div class="flex items-center space-x-3 text-sm text-gray-400 mb-3">
+                                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-medium">Technology</span>
                                 <span>Dec 13, 2024</span>
                                 <span>8 min read</span>
                             </div>
                             <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition">What is RAG? A Complete Guide to Retrieval-Augmented Generation</h3>
-                            <p class="text-gray-600 mb-4">Learn how RAG technology is transforming AI applications by combining the power of large language models with your own data for accurate, contextual responses.</p>
-                            <span class="text-primary font-medium">Read more &rarr;</span>
+                            <p class="text-gray-400 mb-4">Learn how RAG technology is transforming AI applications by combining the power of large language models with your own data for accurate, contextual responses.</p>
+                            <span class="text-primary font-medium inline-flex items-center">
+                                Read more
+                                <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </span>
                         </div>
                     </div>
                 </a>
@@ -116,136 +155,158 @@
 
             <!-- Recent Posts -->
             <h2 class="text-sm font-semibold text-primary uppercase tracking-wide mb-6">Recent Articles</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Post 1 -->
-                <a href="/blog/semantic-search-vs-keyword-search/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
-                    <div class="h-40 bg-gradient-to-br from-secondary to-pink-500"></div>
+                <a href="/blog/semantic-search-vs-keyword-search/" class="bg-white/5 rounded-xl border border-white/10 overflow-hidden card-hover group">
+                    <div class="h-40 bg-gradient-to-br from-secondary to-pink-500 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
                     <div class="p-6">
-                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                            <span class="bg-secondary/10 text-secondary px-2 py-1 rounded">Guide</span>
+                        <div class="flex items-center space-x-2 text-sm text-gray-400 mb-3">
+                            <span class="bg-secondary/20 text-secondary px-2 py-1 rounded-full text-xs font-medium">Guide</span>
                             <span>Dec 10, 2024</span>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Semantic Search vs Keyword Search: Why Context Matters</h3>
-                        <p class="text-gray-600 text-sm">Discover why semantic search finds what you mean, not just what you type, and how it transforms document retrieval.</p>
+                        <p class="text-gray-400 text-sm">Discover why semantic search finds what you mean, not just what you type.</p>
                     </div>
                 </a>
 
                 <!-- Post 2 -->
-                <a href="/blog/building-family-knowledge-base/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
-                    <div class="h-40 bg-gradient-to-br from-green-500 to-teal-500"></div>
+                <a href="/blog/building-family-knowledge-base/" class="bg-white/5 rounded-xl border border-white/10 overflow-hidden card-hover group">
+                    <div class="h-40 bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
                     <div class="p-6">
-                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded">Tips</span>
+                        <div class="flex items-center space-x-2 text-sm text-gray-400 mb-3">
+                            <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-medium">Tips</span>
                             <span>Dec 8, 2024</span>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Building a Family Knowledge Base: Recipes, Memories, and More</h3>
-                        <p class="text-gray-600 text-sm">How families are using AI to preserve and search generations of recipes, photos, and family history.</p>
+                        <p class="text-gray-400 text-sm">How families are using AI to preserve and search generations of recipes and history.</p>
                     </div>
                 </a>
 
                 <!-- Post 3 -->
-                <a href="/blog/enterprise-knowledge-management-2025/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
-                    <div class="h-40 bg-gradient-to-br from-orange-500 to-red-500"></div>
+                <a href="/blog/enterprise-knowledge-management-2025/" class="bg-white/5 rounded-xl border border-white/10 overflow-hidden card-hover group">
+                    <div class="h-40 bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
                     <div class="p-6">
-                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded">Enterprise</span>
+                        <div class="flex items-center space-x-2 text-sm text-gray-400 mb-3">
+                            <span class="bg-orange-500/20 text-orange-400 px-2 py-1 rounded-full text-xs font-medium">Enterprise</span>
                             <span>Dec 5, 2024</span>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Enterprise Knowledge Management in 2025: AI-First Strategies</h3>
-                        <p class="text-gray-600 text-sm">How leading organizations are deploying AI to unlock institutional knowledge and boost productivity.</p>
+                        <p class="text-gray-400 text-sm">How leading organizations are deploying AI to unlock institutional knowledge.</p>
                     </div>
                 </a>
 
                 <!-- Post 4 -->
-                <a href="/blog/self-hosting-ai-knowledge-base/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
-                    <div class="h-40 bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                <a href="/blog/self-hosting-ai-knowledge-base/" class="bg-white/5 rounded-xl border border-white/10 overflow-hidden card-hover group">
+                    <div class="h-40 bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                        </svg>
+                    </div>
                     <div class="p-6">
-                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                            <span class="bg-gray-200 text-gray-700 px-2 py-1 rounded">Tutorial</span>
+                        <div class="flex items-center space-x-2 text-sm text-gray-400 mb-3">
+                            <span class="bg-gray-500/20 text-gray-300 px-2 py-1 rounded-full text-xs font-medium">Tutorial</span>
                             <span>Dec 2, 2024</span>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Self-Hosting Your AI Knowledge Base: A Complete Guide</h3>
-                        <p class="text-gray-600 text-sm">Step-by-step guide to deploying Knowledge Nexus on your own infrastructure with Docker.</p>
+                        <p class="text-gray-400 text-sm">Step-by-step guide to deploying Knowledge Nexus on your own infrastructure.</p>
                     </div>
                 </a>
 
                 <!-- Post 5 -->
-                <a href="/blog/ai-research-assistant-guide/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
-                    <div class="h-40 bg-gradient-to-br from-cyan-500 to-blue-500"></div>
+                <a href="/blog/ai-research-assistant-guide/" class="bg-white/5 rounded-xl border border-white/10 overflow-hidden card-hover group">
+                    <div class="h-40 bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                        </svg>
+                    </div>
                     <div class="p-6">
-                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                            <span class="bg-cyan-100 text-cyan-700 px-2 py-1 rounded">Research</span>
+                        <div class="flex items-center space-x-2 text-sm text-gray-400 mb-3">
+                            <span class="bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded-full text-xs font-medium">Research</span>
                             <span>Nov 28, 2024</span>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Using AI as Your Research Assistant: Workflows That Work</h3>
-                        <p class="text-gray-600 text-sm">Practical workflows for academics and professionals to accelerate research with AI agents.</p>
+                        <p class="text-gray-400 text-sm">Practical workflows to accelerate research with AI agents.</p>
                     </div>
                 </a>
 
                 <!-- Post 6 -->
-                <a href="/blog/privacy-first-ai/" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition group">
-                    <div class="h-40 bg-gradient-to-br from-pink-500 to-rose-500"></div>
+                <a href="/blog/privacy-first-ai/" class="bg-white/5 rounded-xl border border-white/10 overflow-hidden card-hover group">
+                    <div class="h-40 bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
                     <div class="p-6">
-                        <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                            <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded">Security</span>
+                        <div class="flex items-center space-x-2 text-sm text-gray-400 mb-3">
+                            <span class="bg-pink-500/20 text-pink-400 px-2 py-1 rounded-full text-xs font-medium">Security</span>
                             <span>Nov 25, 2024</span>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 group-hover:text-primary transition">Privacy-First AI: Keeping Your Data Yours</h3>
-                        <p class="text-gray-600 text-sm">How to leverage AI for knowledge management without sacrificing privacy or data sovereignty.</p>
+                        <p class="text-gray-400 text-sm">How to leverage AI without sacrificing privacy or data sovereignty.</p>
                     </div>
                 </a>
             </div>
 
             <!-- Newsletter Signup -->
-            <div class="mt-16 bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 md:p-12 text-white text-center">
+            <div class="mt-16 bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 rounded-2xl p-8 md:p-12 text-center">
                 <h2 class="text-2xl md:text-3xl font-bold mb-4">Stay Updated</h2>
-                <p class="text-lg opacity-90 mb-6">Get the latest insights on AI-powered knowledge management delivered to your inbox.</p>
+                <p class="text-lg text-gray-400 mb-6">Get the latest insights on AI-powered knowledge management delivered to your inbox.</p>
                 <form class="max-w-md mx-auto flex gap-3">
-                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white">
-                    <button type="submit" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Subscribe</button>
+                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition">Subscribe</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+    <footer class="bg-black/40 border-t border-white/5 py-12 px-4 mt-16">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-lg">K</span>
-                        </div>
-                        <span class="font-bold text-xl text-white">Knowledge Nexus</span>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
+                        <span class="font-bold text-xl">Knowledge Nexus</span>
                     </div>
-                    <p class="text-sm">Your AI-powered knowledge platform.</p>
+                    <p class="text-gray-500 text-sm">AI-powered knowledge management for individuals, families, and enterprises.</p>
                 </div>
                 <div>
-                    <h5 class="font-semibold text-white mb-4">Product</h5>
-                    <ul class="space-y-2 text-sm">
+                    <h5 class="font-semibold mb-4">Product</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
                         <li><a href="/#features" class="hover:text-white transition">Features</a></li>
                         <li><a href="/#pricing" class="hover:text-white transition">Pricing</a></li>
-                        <li><a href="/#enterprise" class="hover:text-white transition">Enterprise</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-semibold text-white mb-4">Resources</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="https://docs.knowledgenexus.ai" class="hover:text-white transition" rel="noopener">Documentation</a></li>
                         <li><a href="/blog/" class="hover:text-white transition">Blog</a></li>
-                        <li><a href="https://github.com/knowledgenexus" class="hover:text-white transition" rel="noopener noreferrer" target="_blank">GitHub</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-semibold text-white mb-4">Legal</h5>
-                    <ul class="space-y-2 text-sm">
+                    <h5 class="font-semibold mb-4">Resources</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="https://docs.knowledgenexus.ai" class="hover:text-white transition" rel="noopener">Documentation</a></li>
+                        <li><a href="/blog/what-is-rag/" class="hover:text-white transition">What is RAG?</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Legal</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
                         <li><a href="/privacy/" class="hover:text-white transition">Privacy Policy</a></li>
                         <li><a href="/terms/" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="/security/" class="hover:text-white transition">Security</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+            <div class="border-t border-white/5 mt-12 pt-8 text-sm text-center text-gray-600">
                 <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
             </div>
         </div>
