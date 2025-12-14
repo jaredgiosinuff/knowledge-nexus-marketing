@@ -33,12 +33,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#0f172a">
 
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://accounts.google.com">
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="dns-prefetch" href="https://accounts.google.com">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -46,18 +46,161 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
                     colors: {
-                        primary: '#2563eb',
-                        secondary: '#7c3aed',
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
                         accent: '#06b6d4',
-                    }
+                        dark: '#0f172a',
+                        cream: '#faf8f5',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.6)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                    },
                 }
             }
         }
     </script>
 
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Custom animations and effects */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-border {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+            padding: 2px;
+            border-radius: 1rem;
+        }
+
+        .gradient-border-inner {
+            background: #0f172a;
+            border-radius: calc(1rem - 2px);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.3), transparent),
+                        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(139, 92, 246, 0.15), transparent),
+                        radial-gradient(ellipse 60% 40% at 20% 80%, rgba(6, 182, 212, 0.1), transparent);
+        }
+
+        .mesh-gradient {
+            background:
+                radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(139, 92, 246, 0.1) 0px, transparent 50%);
+        }
+
+        .feature-icon {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        /* Scrolling logos animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .logo-scroll {
+            animation: scroll 30s linear infinite;
+        }
+
+        .logo-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        /* Glowing orb effect */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Product mockup styles */
+        .mockup-shadow {
+            box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 0 100px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Stat counter animation */
+        .stat-glow {
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Nav blur effect */
+        .nav-blur {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Button glow */
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Testimonial card */
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
 
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -101,124 +244,150 @@
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",
-            "ratingCount": "127"
+            "ratingCount": "150"
         },
-        "description": "AI-powered knowledge management platform with semantic search, voice assistant, and research agents.",
-        "featureList": [
-            "Semantic Search",
-            "Voice Assistant",
-            "Desktop Agent",
-            "Family Sharing",
-            "Research Agents",
-            "Enterprise Self-Hosting"
-        ]
+        "description": "AI-powered knowledge management platform with semantic search, voice assistant, and research agents."
     }
     </script>
 
-    <!-- Structured Data - FAQ -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What is Knowledge Nexus?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Knowledge Nexus is an AI-powered knowledge management platform that transforms your documents into a searchable, intelligent knowledge base. Ask questions in natural language and get instant answers."
+    <!-- Auth JavaScript -->
+    <script>
+        // Configuration
+        const CONFIG = {
+            API_BASE_URL: 'https://api.knowledgenexus.ai',
+            APP_URL: 'https://app.knowledgenexus.ai',
+            GOOGLE_CLIENT_ID: null
+        };
+
+        // Fetch Google Client ID from backend
+        async function initGoogleAuth() {
+            try {
+                const response = await fetch(`${CONFIG.API_BASE_URL}/api/auth/google/client-id`);
+                if (response.ok) {
+                    const data = await response.json();
+                    CONFIG.GOOGLE_CLIENT_ID = data.client_id;
+                    initializeGoogleButton();
                 }
-            },
-            {
-                "@type": "Question",
-                "name": "Is there a free tier?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes! Our Explorer tier is completely free and includes 500 documents, 500MB storage, and 50 AI queries per month. Perfect for trying out the platform."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can I self-host Knowledge Nexus?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, our Enterprise tier supports full self-hosted deployment. Your data never leaves your servers. We support air-gapped deployments and bring-your-own-LLM configurations."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What file types are supported?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Knowledge Nexus supports PDF, Word documents, text files, images (with OCR), spreadsheets, and more. Our desktop agent can also index files from your local computer."
-                }
+            } catch (error) {
+                console.log('Auth not configured yet');
             }
-        ]
-    }
-    </script>
-
-    <!-- Structured Data - Product/Pricing -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "Knowledge Nexus Scholar Plan",
-        "description": "AI-powered knowledge management with unlimited documents, 25GB storage, 2000 AI queries/month, voice assistant, and research agents.",
-        "brand": {
-            "@type": "Brand",
-            "name": "Knowledge Nexus"
-        },
-        "offers": {
-            "@type": "Offer",
-            "price": "29",
-            "priceCurrency": "USD",
-            "priceValidUntil": "2025-12-31",
-            "availability": "https://schema.org/InStock",
-            "url": "https://knowledgenexus.ai/#pricing"
         }
-    }
+
+        function initializeGoogleButton() {
+            if (!CONFIG.GOOGLE_CLIENT_ID || !google?.accounts?.id) return;
+
+            google.accounts.id.initialize({
+                client_id: CONFIG.GOOGLE_CLIENT_ID,
+                callback: handleCredentialResponse,
+                auto_select: false,
+            });
+        }
+
+        async function handleCredentialResponse(response) {
+            try {
+                const res = await fetch(`${CONFIG.API_BASE_URL}/api/auth/google`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ credential: response.credential }),
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    updateAuthUI(data.user);
+                }
+            } catch (error) {
+                console.error('Login failed:', error);
+            }
+        }
+
+        function login() {
+            if (google?.accounts?.id) {
+                google.accounts.id.prompt();
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('user');
+            updateAuthUI(null);
+        }
+
+        function enterPortal() {
+            window.location.href = CONFIG.APP_URL;
+        }
+
+        function updateAuthUI(user) {
+            const loggedOut = document.getElementById('auth-logged-out');
+            const loggedIn = document.getElementById('auth-logged-in');
+            const greeting = document.getElementById('user-greeting');
+
+            if (user) {
+                loggedOut?.classList.add('hidden');
+                loggedIn?.classList.remove('hidden');
+                if (greeting) greeting.textContent = `Hi, ${user.name?.split(' ')[0] || 'there'}!`;
+            } else {
+                loggedOut?.classList.remove('hidden');
+                loggedIn?.classList.add('hidden');
+            }
+        }
+
+        // Check auth state on load
+        document.addEventListener('DOMContentLoaded', () => {
+            initGoogleAuth();
+            const user = JSON.parse(localStorage.getItem('user') || 'null');
+            updateAuthUI(user);
+        });
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-dark text-white font-sans antialiased overflow-x-hidden">
+    <!-- Floating orbs background -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="orb w-96 h-96 bg-primary/30 -top-48 -left-48" style="animation-delay: 0s;"></div>
+        <div class="orb w-80 h-80 bg-secondary/20 top-1/4 -right-40" style="animation-delay: 2s;"></div>
+        <div class="orb w-64 h-64 bg-accent/20 bottom-1/4 -left-32" style="animation-delay: 4s;"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+    <nav class="fixed top-0 left-0 right-0 nav-blur z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="/" class="flex items-center space-x-2">
-                        <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
+                    <a href="/" class="flex items-center space-x-3 group">
+                        <img src="/images/logo.png" alt="Knowledge Nexus" class="h-9 w-9 rounded-lg transition group-hover:scale-105">
                         <span class="font-bold text-xl">Knowledge Nexus</span>
                     </a>
                 </div>
 
                 <!-- Nav Links -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#features" class="text-gray-600 hover:text-primary transition">Features</a>
-                    <a href="#pricing" class="text-gray-600 hover:text-primary transition">Pricing</a>
-                    <a href="#enterprise" class="text-gray-600 hover:text-primary transition">Enterprise</a>
-                    <a href="https://docs.knowledgenexus.ai" class="text-gray-600 hover:text-primary transition" rel="noopener">Docs</a>
+                    <a href="#features" class="text-gray-300 hover:text-white transition">Features</a>
+                    <a href="#how-it-works" class="text-gray-300 hover:text-white transition">How it Works</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-white transition">Pricing</a>
+                    <a href="/blog/" class="text-gray-300 hover:text-white transition">Blog</a>
                 </div>
 
                 <!-- Auth Section -->
                 <div class="flex items-center space-x-4">
                     <!-- Logged Out State -->
                     <div id="auth-logged-out" class="flex items-center space-x-4">
-                        <button onclick="login()" class="text-gray-600 hover:text-primary transition">
+                        <button onclick="login()" class="text-gray-300 hover:text-white transition font-medium">
                             Sign In
                         </button>
-                        <a href="#pricing" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">
-                            Get Started
+                        <a href="#pricing" class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-semibold transition btn-glow">
+                            Get Started Free
                         </a>
                     </div>
 
                     <!-- Logged In State -->
                     <div id="auth-logged-in" class="hidden flex items-center space-x-4">
-                        <span id="user-greeting" class="text-gray-600">Welcome!</span>
-                        <button onclick="enterPortal()" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">
-                            Enter Portal
+                        <span id="user-greeting" class="text-gray-300">Welcome!</span>
+                        <button onclick="enterPortal()" class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-semibold transition btn-glow">
+                            Open App
                         </button>
-                        <button onclick="logout()" class="text-gray-500 hover:text-gray-700 transition">
+                        <button onclick="logout()" class="text-gray-400 hover:text-white transition p-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                             </svg>
@@ -230,469 +399,651 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 bg-gradient-to-b from-white to-gray-50">
-        <div class="max-w-7xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">
-                Your Knowledge,
-                <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    AI-Powered
-                </span>
-            </h1>
-            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Transform your documents, notes, and files into a searchable, intelligent knowledge base.
-                Ask questions in natural language. Get answers instantly.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#pricing" class="bg-primary text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 transition shadow-lg shadow-primary/25">
-                    Start Free Trial
-                </a>
-                <a href="#demo" class="bg-white text-gray-700 px-8 py-4 rounded-xl text-lg font-semibold border border-gray-300 hover:border-primary hover:text-primary transition">
-                    Watch Demo
-                </a>
-            </div>
+    <section class="relative min-h-screen flex items-center pt-16 hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Text Content -->
+                <div class="animate-fade-in">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-8">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        <span class="text-sm text-gray-300">Now with Voice AI & Research Agents</span>
+                    </div>
 
-            <!-- Trust indicators -->
-            <div class="mt-12 text-gray-500 text-sm">
-                <p>Trusted by researchers, families, and enterprises worldwide</p>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                        Your documents.
+                        <span class="gradient-text block">Instantly searchable.</span>
+                    </h1>
+
+                    <p class="text-xl text-gray-400 mb-8 max-w-lg leading-relaxed">
+                        Drop in your files, ask questions in plain English, get answers in seconds.
+                        AI-powered knowledge that actually understands what you're looking for.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <a href="#pricing" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition btn-glow text-center">
+                            Start Free - No Card Required
+                        </a>
+                        <a href="#demo" class="group flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl text-lg font-semibold transition">
+                            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
+                            </svg>
+                            <span>Watch Demo</span>
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="flex items-center space-x-8">
+                        <div>
+                            <div class="text-3xl font-bold stat-glow">< 2s</div>
+                            <div class="text-gray-500 text-sm">Avg. response time</div>
+                        </div>
+                        <div class="w-px h-12 bg-white/10"></div>
+                        <div>
+                            <div class="text-3xl font-bold stat-glow">50+</div>
+                            <div class="text-gray-500 text-sm">File types supported</div>
+                        </div>
+                        <div class="w-px h-12 bg-white/10"></div>
+                        <div>
+                            <div class="text-3xl font-bold stat-glow">100%</div>
+                            <div class="text-gray-500 text-sm">Private & secure</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Product Mockup -->
+                <div class="relative animate-float hidden lg:block">
+                    <div class="gradient-border mockup-shadow">
+                        <div class="gradient-border-inner p-1">
+                            <!-- Mockup of the app interface -->
+                            <div class="bg-slate-900 rounded-xl overflow-hidden">
+                                <!-- Title bar -->
+                                <div class="flex items-center space-x-2 px-4 py-3 bg-slate-800/50 border-b border-white/5">
+                                    <div class="flex space-x-2">
+                                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                    </div>
+                                    <div class="flex-1 text-center text-sm text-gray-500">Knowledge Nexus</div>
+                                </div>
+                                <!-- Search interface mockup -->
+                                <div class="p-6 space-y-4">
+                                    <div class="flex items-center space-x-3 bg-slate-800/50 rounded-lg px-4 py-3 border border-white/5">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                        </svg>
+                                        <span class="text-gray-400">What's our refund policy for enterprise customers?</span>
+                                    </div>
+                                    <!-- AI Response -->
+                                    <div class="bg-primary/10 border border-primary/20 rounded-lg p-4">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 110-12 6 6 0 010 12z"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm text-gray-300 leading-relaxed">
+                                                    Enterprise customers have a <span class="text-primary font-medium">30-day full refund policy</span>.
+                                                    According to your Enterprise Agreement (Section 4.2), cancellations within the first month
+                                                    receive a complete refund...
+                                                </p>
+                                                <div class="flex items-center space-x-2 mt-3 text-xs text-gray-500">
+                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                                    </svg>
+                                                    <span>Source: Enterprise-Agreement-2024.pdf</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Document sources -->
+                                    <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                        <span>Searched</span>
+                                        <span class="text-primary font-medium">2,847 documents</span>
+                                        <span>in</span>
+                                        <span class="text-green-400 font-medium">0.8s</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating elements -->
+                    <div class="absolute -right-8 top-20 glass rounded-lg p-3 animate-float" style="animation-delay: 1s;">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm text-gray-300">Voice Ready</span>
+                        </div>
+                    </div>
+                    <div class="absolute -left-8 bottom-32 glass rounded-lg p-3 animate-float" style="animation-delay: 2s;">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm text-gray-300">Encrypted</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-20 px-4">
+    <!-- Logos Section -->
+    <section class="py-12 border-y border-white/5 bg-black/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-500 text-sm mb-8">Trusted by researchers, families, and forward-thinking teams</p>
+            <div class="relative overflow-hidden">
+                <div class="flex space-x-16 logo-scroll">
+                    <!-- Logo placeholders - repeat for infinite scroll effect -->
+                    <div class="flex items-center space-x-16 text-gray-600">
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Research Labs</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Family Archives</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Legal Firms</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Healthcare</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Education</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Consulting</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Research Labs</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Family Archives</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Legal Firms</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Healthcare</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Education</span>
+                        <span class="text-lg font-semibold whitespace-nowrap opacity-50">Consulting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Bento Grid -->
+    <section id="features" class="py-24 px-4 relative mesh-gradient">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Everything You Need</h2>
-                <p class="text-xl text-gray-600">Powerful features for individuals, families, and teams</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Everything you need to <span class="gradient-text">know everything</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Powerful AI capabilities wrapped in an interface so simple, your whole family can use it.
+                </p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Large Feature Card - Semantic Search -->
+                <div class="md:col-span-2 bg-gradient-to-br from-primary/10 to-secondary/5 rounded-3xl p-8 border border-white/10 card-hover">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center">
+                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-primary bg-primary/10 px-3 py-1 rounded-full">Core Feature</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Semantic Search</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Forget keywords. Ask questions like you're talking to a colleague.
+                        "What did we decide about the Q4 budget?" or "Find mom's apple pie recipe" - we understand context, not just words.
+                    </p>
+                    <div class="flex items-center space-x-4 text-sm">
+                        <div class="flex items-center space-x-2 text-green-400">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Natural language</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-green-400">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Cross-document</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-green-400">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Source citations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voice Assistant -->
+                <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/5 rounded-3xl p-8 border border-white/10 card-hover">
+                    <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2)); border-color: rgba(34, 197, 94, 0.3);">
+                        <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Voice Assistant</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Hands full? Just ask. "Hey, what's the warranty on our dishwasher?" Get spoken answers from your knowledge base.
+                    </p>
+                </div>
+
+                <!-- Research Agents -->
+                <div class="bg-gradient-to-br from-orange-500/10 to-amber-500/5 rounded-3xl p-8 border border-white/10 card-hover">
+                    <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(245, 158, 11, 0.2)); border-color: rgba(249, 115, 22, 0.3);">
+                        <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Research Agents</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Set up automated research that runs while you sleep. Wake up to curated insights and trend analysis.
+                    </p>
+                </div>
+
+                <!-- Family Sharing -->
+                <div class="bg-gradient-to-br from-pink-500/10 to-rose-500/5 rounded-3xl p-8 border border-white/10 card-hover">
+                    <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 63, 94, 0.2)); border-color: rgba(236, 72, 153, 0.3);">
+                        <svg class="w-7 h-7 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Family Sharing</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Share recipes, manuals, medical records with family members. Everyone searches, everyone benefits.
+                    </p>
+                </div>
+
+                <!-- Large Feature Card - Security -->
+                <div class="md:col-span-2 bg-gradient-to-br from-cyan-500/10 to-blue-500/5 rounded-3xl p-8 border border-white/10 card-hover">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2)); border-color: rgba(6, 182, 212, 0.3);">
+                            <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-cyan-400 bg-cyan-400/10 px-3 py-1 rounded-full">Enterprise Ready</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Private & Secure</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Your data stays yours. Self-host on your own infrastructure, or use our encrypted cloud.
+                        Either way, we never train on your data and you maintain complete control.
+                    </p>
+                    <div class="flex items-center space-x-4 text-sm">
+                        <div class="flex items-center space-x-2 text-cyan-400">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Self-host option</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-cyan-400">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Encrypted at rest</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-cyan-400">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>No data training</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 px-4 bg-black/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Three steps to <span class="gradient-text">total recall</span>
+                </h2>
+                <p class="text-xl text-gray-400">From chaos to clarity in minutes, not months.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="text-8xl font-bold text-white/5 absolute -top-8 -left-4">1</div>
+                    <div class="relative z-10 bg-white/5 rounded-2xl p-8 border border-white/10">
+                        <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Drop your files</h3>
+                        <p class="text-gray-400">
+                            PDFs, Word docs, emails, images, spreadsheets - just drag and drop. We handle 50+ file types automatically.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Semantic Search</h3>
-                    <p class="text-gray-600">Ask questions in natural language. Our AI understands context and finds exactly what you need.</p>
                 </div>
 
-                <!-- Feature 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-                        </svg>
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="text-8xl font-bold text-white/5 absolute -top-8 -left-4">2</div>
+                    <div class="relative z-10 bg-white/5 rounded-2xl p-8 border border-white/10">
+                        <div class="w-16 h-16 bg-secondary/20 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">AI understands</h3>
+                        <p class="text-gray-400">
+                            Our AI reads, indexes, and connects your documents - understanding relationships humans might miss.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Voice Assistant</h3>
-                    <p class="text-gray-600">Talk to your knowledge base. Ask questions, get answers, hands-free.</p>
                 </div>
 
-                <!-- Feature 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="text-8xl font-bold text-white/5 absolute -top-8 -left-4">3</div>
+                    <div class="relative z-10 bg-white/5 rounded-2xl p-8 border border-white/10">
+                        <div class="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Just ask</h3>
+                        <p class="text-gray-400">
+                            Type or speak your question in plain English. Get precise answers with sources - every time.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Desktop Agent</h3>
-                    <p class="text-gray-600">Index files on your computer. Search everything from one place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 px-4 relative mesh-gradient">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Loved by <span class="gradient-text">knowledge seekers</span>
+                </h2>
+                <p class="text-xl text-gray-400">See what our users are saying.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card rounded-2xl p-6 card-hover">
+                    <div class="flex items-center space-x-1 text-yellow-400 mb-4">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        "Finally found my grandmother's pie recipes that were scattered across 40 years of handwritten notes. The AI actually understood 'that one with the crumbly top.'"
+                    </p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold">S</div>
+                        <div>
+                            <div class="font-semibold">Sarah M.</div>
+                            <div class="text-sm text-gray-500">Family Archivist</div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Feature 4 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card rounded-2xl p-6 card-hover">
+                    <div class="flex items-center space-x-1 text-yellow-400 mb-4">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Family Sharing</h3>
-                    <p class="text-gray-600">Share knowledge across your household. Recipes, manuals, memories - all searchable.</p>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        "I uploaded 10 years of research papers. Now I can ask 'what studies contradict the Smith hypothesis?' and get an actual answer with citations."
+                    </p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center text-white font-bold">D</div>
+                        <div>
+                            <div class="font-semibold">Dr. James K.</div>
+                            <div class="text-sm text-gray-500">Research Scientist</div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Feature 5 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card rounded-2xl p-6 card-hover">
+                    <div class="flex items-center space-x-1 text-yellow-400 mb-4">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Research Agents</h3>
-                    <p class="text-gray-600">Automated research that runs in the background. Wake up to insights.</p>
-                </div>
-
-                <!-- Feature 6 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                        </svg>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        "The voice feature changed everything. I ask about contract terms while driving. My assistant thinks I have a photographic memory."
+                    </p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-secondary to-pink-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
+                        <div>
+                            <div class="font-semibold">Michael T.</div>
+                            <div class="text-sm text-gray-500">Attorney</div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Privacy First</h3>
-                    <p class="text-gray-600">Your data stays yours. Self-host or use our secure cloud. Encrypted at rest and in transit.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-20 px-4 bg-gray-100">
+    <section id="pricing" class="py-24 px-4 bg-black/20">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
-                <p class="text-xl text-gray-600">Start free, upgrade when you need more</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Simple, <span class="gradient-text">honest pricing</span>
+                </h2>
+                <p class="text-xl text-gray-400">Start free. Upgrade when you need more.</p>
             </div>
 
-            <!-- Consumer Tiers -->
-            <div class="mb-12">
-                <h3 class="text-xl font-semibold text-center mb-8 text-gray-500">For Individuals & Families</h3>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <!-- Free -->
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                        <h4 class="text-lg font-semibold mb-2">Explorer</h4>
-                        <div class="mb-4">
-                            <span class="text-3xl font-bold">$0</span>
-                            <span class="text-gray-500">/month</span>
-                        </div>
-                        <ul class="space-y-2 text-sm text-gray-600 mb-6">
-                            <li>500 documents</li>
-                            <li>500MB storage</li>
-                            <li>50 AI queries/month</li>
-                            <li>Basic search</li>
-                        </ul>
-                        <button onclick="selectPlan('free')" class="w-full py-2 border border-gray-300 rounded-lg hover:border-primary hover:text-primary transition">
-                            Get Started
-                        </button>
+            <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <!-- Free Tier -->
+                <div class="bg-white/5 rounded-2xl p-8 border border-white/10 card-hover">
+                    <h3 class="text-xl font-bold mb-2">Personal</h3>
+                    <p class="text-gray-500 text-sm mb-4">For individuals getting started</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$0</span>
+                        <span class="text-gray-500">/month</span>
                     </div>
-
-                    <!-- Personal -->
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                        <h4 class="text-lg font-semibold mb-2">Researcher</h4>
-                        <div class="mb-4">
-                            <span class="text-3xl font-bold">$12</span>
-                            <span class="text-gray-500">/month</span>
-                        </div>
-                        <ul class="space-y-2 text-sm text-gray-600 mb-6">
-                            <li>Unlimited documents</li>
-                            <li>10GB storage</li>
-                            <li>500 AI queries/month</li>
-                            <li>60 min voice/month</li>
-                            <li>1 desktop agent</li>
-                        </ul>
-                        <button onclick="selectPlan('personal')" class="w-full py-2 border border-gray-300 rounded-lg hover:border-primary hover:text-primary transition">
-                            Start Trial
-                        </button>
-                    </div>
-
-                    <!-- Pro -->
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border-2 border-primary relative">
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs px-3 py-1 rounded-full">
-                            Popular
-                        </div>
-                        <h4 class="text-lg font-semibold mb-2">Scholar</h4>
-                        <div class="mb-4">
-                            <span class="text-3xl font-bold">$29</span>
-                            <span class="text-gray-500">/month</span>
-                        </div>
-                        <ul class="space-y-2 text-sm text-gray-600 mb-6">
-                            <li>Unlimited documents</li>
-                            <li>25GB storage</li>
-                            <li>2,000 AI queries/month</li>
-                            <li>Unlimited voice</li>
-                            <li>3 desktop agents</li>
-                            <li>Image search</li>
-                            <li>Research agents</li>
-                        </ul>
-                        <button onclick="selectPlan('pro')" class="w-full py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition">
-                            Start Trial
-                        </button>
-                    </div>
-
-                    <!-- Family -->
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                        <h4 class="text-lg font-semibold mb-2">Household</h4>
-                        <div class="mb-4">
-                            <span class="text-3xl font-bold">$49</span>
-                            <span class="text-gray-500">/month</span>
-                        </div>
-                        <ul class="space-y-2 text-sm text-gray-600 mb-6">
-                            <li>Up to 6 members</li>
-                            <li>50GB shared storage</li>
-                            <li>3,000 AI queries/month</li>
-                            <li>Family knowledge base</li>
-                            <li>3 agents per member</li>
-                            <li>Parental controls</li>
-                        </ul>
-                        <button onclick="selectPlan('family')" class="w-full py-2 border border-gray-300 rounded-lg hover:border-primary hover:text-primary transition">
-                            Start Trial
-                        </button>
-                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-400">
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>100 documents</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Semantic search</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Web & mobile apps</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="block w-full text-center bg-white/10 hover:bg-white/20 py-3 rounded-lg font-semibold transition">
+                        Get Started
+                    </a>
                 </div>
-            </div>
 
-            <!-- Business Tiers -->
-            <div>
-                <h3 class="text-xl font-semibold text-center mb-8 text-gray-500">For Teams & Enterprise</h3>
-                <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                    <!-- Team -->
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                        <h4 class="text-lg font-semibold mb-2">Collective</h4>
-                        <div class="mb-4">
-                            <span class="text-3xl font-bold">$19</span>
-                            <span class="text-gray-500">/user/month</span>
-                        </div>
-                        <p class="text-sm text-gray-500 mb-4">Minimum 3 seats</p>
-                        <ul class="space-y-2 text-sm text-gray-600 mb-6">
-                            <li>Team knowledge base</li>
-                            <li>25GB per user</li>
-                            <li>SSO/SAML</li>
-                            <li>Slack integration</li>
-                        </ul>
-                        <button onclick="selectPlan('team')" class="w-full py-2 border border-gray-300 rounded-lg hover:border-primary hover:text-primary transition">
-                            Contact Sales
-                        </button>
+                <!-- Pro Tier -->
+                <div class="bg-gradient-to-b from-primary/20 to-primary/5 rounded-2xl p-8 border border-primary/30 card-hover relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+                        POPULAR
                     </div>
+                    <h3 class="text-xl font-bold mb-2">Pro</h3>
+                    <p class="text-gray-500 text-sm mb-4">For power users</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$19</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-400">
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Unlimited documents</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Voice assistant</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Research agents</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Desktop agent</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="block w-full text-center bg-primary hover:bg-primary/90 py-3 rounded-lg font-semibold transition btn-glow">
+                        Start Free Trial
+                    </a>
+                </div>
 
-                    <!-- Business -->
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                        <h4 class="text-lg font-semibold mb-2">Department</h4>
-                        <div class="mb-4">
-                            <span class="text-3xl font-bold">$35</span>
-                            <span class="text-gray-500">/user/month</span>
-                        </div>
-                        <p class="text-sm text-gray-500 mb-4">Minimum 10 seats</p>
-                        <ul class="space-y-2 text-sm text-gray-600 mb-6">
-                            <li>Everything in Collective</li>
-                            <li>50GB per user</li>
-                            <li>Custom integrations</li>
-                            <li>Priority support</li>
-                        </ul>
-                        <button onclick="selectPlan('business')" class="w-full py-2 border border-gray-300 rounded-lg hover:border-primary hover:text-primary transition">
-                            Contact Sales
-                        </button>
+                <!-- Family Tier -->
+                <div class="bg-white/5 rounded-2xl p-8 border border-white/10 card-hover">
+                    <h3 class="text-xl font-bold mb-2">Family</h3>
+                    <p class="text-gray-500 text-sm mb-4">For households</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$29</span>
+                        <span class="text-gray-500">/month</span>
                     </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-400">
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Everything in Pro</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Up to 6 members</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Shared collections</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Family permissions</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="block w-full text-center bg-white/10 hover:bg-white/20 py-3 rounded-lg font-semibold transition">
+                        Start Free Trial
+                    </a>
+                </div>
 
-                    <!-- Enterprise -->
-                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl shadow-sm text-white">
-                        <h4 class="text-lg font-semibold mb-2">Enterprise</h4>
-                        <div class="mb-4">
-                            <span class="text-3xl font-bold">Custom</span>
-                        </div>
-                        <p class="text-sm text-gray-300 mb-4">Self-hosted or cloud</p>
-                        <ul class="space-y-2 text-sm text-gray-300 mb-6">
-                            <li>Unlimited everything</li>
-                            <li>On-premise deployment</li>
-                            <li>Custom AI models</li>
-                            <li>Dedicated support</li>
-                            <li>SLA guarantee</li>
-                        </ul>
-                        <button onclick="selectPlan('enterprise')" class="w-full py-2 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition">
-                            Contact Sales
-                        </button>
+                <!-- Enterprise Tier -->
+                <div class="bg-white/5 rounded-2xl p-8 border border-white/10 card-hover">
+                    <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-gray-500 text-sm mb-4">For organizations</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$49</span>
+                        <span class="text-gray-500">/user/mo</span>
                     </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-400">
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Self-hosted option</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>SSO & SCIM</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Audit logs</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Dedicated support</span>
+                        </li>
+                    </ul>
+                    <a href="mailto:enterprise@knowledgenexus.ai" class="block w-full text-center bg-white/10 hover:bg-white/20 py-3 rounded-lg font-semibold transition">
+                        Contact Sales
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enterprise Section -->
-    <section id="enterprise" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-white">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                            Deploy On Your Infrastructure
-                        </h2>
-                        <p class="text-lg text-gray-300 mb-8">
-                            Full control. Your data never leaves your servers.
-                            Configure your own LLM providers, storage, and security policies.
-                        </p>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center space-x-3">
-                                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>Air-gapped deployment option</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>Bring your own LLM (Ollama, vLLM, etc.)</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>SOC 2, HIPAA, GDPR compliant</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>Annual or perpetual licensing</span>
-                            </li>
-                        </ul>
-                        <a href="mailto:enterprise@knowledgenexus.ai" class="inline-flex items-center bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
-                            Talk to Sales
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="hidden md:block">
-                        <div class="bg-gray-800 rounded-xl p-6 font-mono text-sm text-gray-300">
-                            <div class="text-gray-500 mb-2"># Deploy in minutes</div>
-                            <div class="text-green-400">$ docker pull knowledgenexus/enterprise:latest</div>
-                            <div class="text-green-400 mt-1">$ docker-compose up -d</div>
-                            <div class="mt-4 text-gray-500"># Configure your providers</div>
-                            <div class="text-cyan-400">$ vi config/providers.yaml</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="py-20 px-4 bg-gray-50">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-                <p class="text-xl text-gray-600">Everything you need to know about Knowledge Nexus</p>
-            </div>
-
-            <div class="space-y-4">
-                <!-- FAQ 1 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                        <h3 class="font-semibold text-lg">What is Knowledge Nexus?</h3>
-                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600">
-                        <p>Knowledge Nexus is an AI-powered knowledge management platform that transforms your documents into a searchable, intelligent knowledge base. Upload PDFs, documents, images, and more - then ask questions in natural language and get instant answers. Perfect for researchers, families, and enterprises.</p>
-                    </div>
-                </details>
-
-                <!-- FAQ 2 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                        <h3 class="font-semibold text-lg">Is there a free tier?</h3>
-                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600">
-                        <p>Yes! Our Explorer tier is completely free forever and includes 500 documents, 500MB storage, and 50 AI queries per month. No credit card required. Perfect for trying out the platform and personal use.</p>
-                    </div>
-                </details>
-
-                <!-- FAQ 3 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                        <h3 class="font-semibold text-lg">Can I self-host Knowledge Nexus?</h3>
-                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600">
-                        <p>Yes! Our Enterprise tier supports full self-hosted deployment. Your data never leaves your servers. We support air-gapped deployments, bring-your-own-LLM configurations (Ollama, vLLM), and custom security policies. Deploy with Docker in minutes.</p>
-                    </div>
-                </details>
-
-                <!-- FAQ 4 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                        <h3 class="font-semibold text-lg">What file types are supported?</h3>
-                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600">
-                        <p>Knowledge Nexus supports PDF, Word documents (.doc, .docx), text files, Markdown, images (with OCR), Excel spreadsheets, PowerPoint presentations, and more. Our desktop agent can also index files directly from your local computer.</p>
-                    </div>
-                </details>
-
-                <!-- FAQ 5 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                        <h3 class="font-semibold text-lg">How does the AI search work?</h3>
-                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600">
-                        <p>Knowledge Nexus uses advanced RAG (Retrieval-Augmented Generation) technology. Your documents are converted into semantic embeddings, allowing the AI to understand meaning, not just keywords. Ask questions like "What did the contract say about termination?" and get accurate, contextual answers with citations.</p>
-                    </div>
-                </details>
-
-                <!-- FAQ 6 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                        <h3 class="font-semibold text-lg">Is my data secure?</h3>
-                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-600">
-                        <p>Absolutely. We use end-to-end encryption, SOC 2 compliant infrastructure, and never train AI models on your data. Enterprise customers can self-host for complete data sovereignty. We're GDPR and HIPAA compliant.</p>
-                    </div>
-                </details>
+    <!-- Final CTA -->
+    <section class="py-24 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Ready to remember <span class="gradient-text">everything</span>?
+            </h2>
+            <p class="text-xl text-gray-400 mb-8">
+                Join thousands who've transformed how they manage knowledge. Start free, no credit card required.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#pricing" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition btn-glow">
+                    Start Free Trial
+                </a>
+                <a href="mailto:hello@knowledgenexus.ai" class="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl text-lg font-semibold transition">
+                    Talk to Us
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+    <footer class="bg-black/40 border-t border-white/5 py-12 px-4">
         <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
+            <div class="grid md:grid-cols-5 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
                         <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
-                        <span class="font-bold text-xl text-white">Knowledge Nexus</span>
+                        <span class="font-bold text-xl">Knowledge Nexus</span>
                     </div>
-                    <p class="text-sm">Your AI-powered knowledge platform.</p>
+                    <p class="text-gray-500 text-sm mb-4 max-w-xs">
+                        AI-powered knowledge management for individuals, families, and enterprises. Your documents, instantly searchable.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-500 hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
                 </div>
                 <div>
-                    <h5 class="font-semibold text-white mb-4">Product</h5>
-                    <ul class="space-y-2 text-sm">
+                    <h5 class="font-semibold mb-4">Product</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
                         <li><a href="#features" class="hover:text-white transition">Features</a></li>
                         <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
-                        <li><a href="#enterprise" class="hover:text-white transition">Enterprise</a></li>
+                        <li><a href="/blog/" class="hover:text-white transition">Blog</a></li>
                         <li><a href="/changelog" class="hover:text-white transition">Changelog</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-semibold text-white mb-4">Resources</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="https://docs.knowledgenexus.ai" class="hover:text-white transition" rel="noopener">Documentation</a></li>
-                        <li><a href="/blog" class="hover:text-white transition">Blog</a></li>
-                        <li><a href="/support" class="hover:text-white transition">Support</a></li>
-                        <li><a href="https://github.com/knowledgenexus" class="hover:text-white transition" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+                    <h5 class="font-semibold mb-4">Resources</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="https://docs.knowledgenexus.ai" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="/blog/what-is-rag" class="hover:text-white transition">What is RAG?</a></li>
+                        <li><a href="/blog/semantic-search-vs-keyword" class="hover:text-white transition">Semantic Search Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition">API Reference</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-semibold text-white mb-4">Legal</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="/privacy" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="/terms" class="hover:text-white transition">Terms of Service</a></li>
+                    <h5 class="font-semibold mb-4">Company</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="/privacy" class="hover:text-white transition">Privacy</a></li>
+                        <li><a href="/terms" class="hover:text-white transition">Terms</a></li>
                         <li><a href="/security" class="hover:text-white transition">Security</a></li>
+                        <li><a href="mailto:hello@knowledgenexus.ai" class="hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+            <div class="border-t border-white/5 mt-12 pt-8 text-center text-sm text-gray-600">
                 <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <!-- Scripts -->
-    <script src="js/config.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/app.js"></script>
 </body>
 </html>
