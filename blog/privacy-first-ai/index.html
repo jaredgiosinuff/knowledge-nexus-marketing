@@ -13,20 +13,29 @@
     <meta property="og:image" content="https://knowledgenexus.ai/images/og-blog.png">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#2563eb', secondary: '#7c3aed' }}}}</script>
+    <script>tailwind.config = { theme: { extend: { colors: { dark: '#0f172a', primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4' }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }}}}</script>
+    <style>body { font-family: 'Inter', system-ui, sans-serif; } .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }</style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+<body class="bg-dark text-white min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 bg-dark/90 backdrop-blur-md border-b border-white/5 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">K</span>
-                    </div>
+                <a href="/" class="flex items-center space-x-3">
+                    <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
                     <span class="font-bold text-xl">Knowledge Nexus</span>
                 </a>
-                <a href="/#pricing" class="bg-primary text-white px-4 py-2 rounded-lg">Get Started</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#features" class="text-gray-400 hover:text-white transition">Features</a>
+                    <a href="/#pricing" class="text-gray-400 hover:text-white transition">Pricing</a>
+                    <a href="/blog/" class="text-primary font-medium">Blog</a>
+                </div>
+                <a href="/#pricing" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">Get Started</a>
             </div>
         </div>
     </nav>
@@ -35,82 +44,82 @@
         <div class="max-w-3xl mx-auto">
             <header class="mb-12">
                 <div class="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded">Security</span>
-                    <span>November 25, 2024</span>
+                    <span class="bg-pink-500/20 text-pink-400 px-2 py-1 rounded">Security</span>
+                    <span>November 25, 2025</span>
                     <span>6 min read</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Privacy-First AI: Keeping Your Data Yours</h1>
-                <p class="text-xl text-gray-600">How to leverage AI for knowledge management without sacrificing privacy or data sovereignty.</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Privacy-First AI: <span class="gradient-text">Keeping Your Data Yours</span></h1>
+                <p class="text-xl text-gray-400">How to leverage AI for knowledge management without sacrificing privacy or data sovereignty.</p>
             </header>
 
             <div class="bg-gradient-to-br from-pink-500 to-rose-500 h-64 rounded-2xl mb-12"></div>
 
-            <div class="prose prose-lg max-w-none">
-                <h2 class="text-2xl font-bold mt-8 mb-4">The Privacy Paradox</h2>
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300">
+                <h2 class="text-2xl font-bold mt-8 mb-4 text-white">The Privacy Paradox</h2>
                 <p class="mb-4">AI is incredibly powerful, but most AI services require sending your data to external servers. For many individuals and organizations, this is a non-starter. Medical records, legal documents, proprietary research, personal journals - some data simply cannot leave your control.</p>
 
                 <p class="mb-4">The good news: you don't have to choose between AI capabilities and privacy.</p>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Privacy Threats to Understand</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Privacy Threats to Understand</h2>
                 <div class="space-y-4 my-8">
-                    <div class="bg-red-50 border border-red-200 rounded-xl p-4">
-                        <h3 class="font-semibold text-red-700">Data Training</h3>
-                        <p class="text-sm text-gray-600">Some AI providers use customer data to train their models. Your confidential documents could influence responses to other users.</p>
+                    <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+                        <h3 class="font-semibold text-red-400">Data Training</h3>
+                        <p class="text-sm text-gray-400">Some AI providers use customer data to train their models. Your confidential documents could influence responses to other users.</p>
                     </div>
-                    <div class="bg-orange-50 border border-orange-200 rounded-xl p-4">
-                        <h3 class="font-semibold text-orange-700">Data Retention</h3>
-                        <p class="text-sm text-gray-600">Cloud services may retain your queries and documents for logging, analytics, or legal compliance.</p>
+                    <div class="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4">
+                        <h3 class="font-semibold text-orange-400">Data Retention</h3>
+                        <p class="text-sm text-gray-400">Cloud services may retain your queries and documents for logging, analytics, or legal compliance.</p>
                     </div>
-                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-                        <h3 class="font-semibold text-yellow-700">Third-Party Access</h3>
-                        <p class="text-sm text-gray-600">Data might be accessible to employees, contractors, or through legal processes in the provider's jurisdiction.</p>
+                    <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4">
+                        <h3 class="font-semibold text-yellow-400">Third-Party Access</h3>
+                        <p class="text-sm text-gray-400">Data might be accessible to employees, contractors, or through legal processes in the provider's jurisdiction.</p>
                     </div>
                 </div>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">How Knowledge Nexus Protects Your Privacy</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">How Knowledge Nexus Protects Your Privacy</h2>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">1. Self-Hosting Option</h3>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">1. Self-Hosting Option</h3>
                 <p class="mb-4">Run Knowledge Nexus entirely on your own infrastructure. Your data never touches our servers - or anyone else's.</p>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">2. Local LLM Support</h3>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">2. Local LLM Support</h3>
                 <p class="mb-4">Use Ollama or other local LLMs for complete air-gapped operation. No API calls to external AI providers required.</p>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">3. Zero-Knowledge Cloud</h3>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">3. Privacy-Focused Cloud</h3>
                 <p class="mb-4">For our cloud offering, we use:</p>
-                <ul class="list-disc list-inside space-y-2 mb-6">
-                    <li>End-to-end encryption for documents at rest</li>
+                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-400">
+                    <li>Encryption for documents at rest and in transit</li>
                     <li>Encrypted embeddings that can't be reversed to original text</li>
                     <li>No logging of query content</li>
                     <li>SOC 2 Type II certified infrastructure</li>
                 </ul>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">4. Data Processing Agreements</h3>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">4. Data Processing Agreements</h3>
                 <p class="mb-4">Enterprise customers get DPAs that guarantee:</p>
-                <ul class="list-disc list-inside space-y-2 mb-6">
+                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-400">
                     <li>No use of customer data for model training</li>
                     <li>Data deletion upon request</li>
                     <li>Audit rights</li>
                     <li>Specific data residency requirements</li>
                 </ul>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Compliance Considerations</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Compliance Considerations</h2>
                 <div class="grid md:grid-cols-3 gap-4 my-8">
-                    <div class="bg-white border rounded-xl p-4 text-center">
-                        <div class="text-2xl font-bold text-blue-600">GDPR</div>
-                        <p class="text-sm text-gray-600 mt-2">EU data protection</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-blue-400">GDPR</div>
+                        <p class="text-sm text-gray-400 mt-2">EU data protection</p>
                     </div>
-                    <div class="bg-white border rounded-xl p-4 text-center">
-                        <div class="text-2xl font-bold text-green-600">HIPAA</div>
-                        <p class="text-sm text-gray-600 mt-2">Healthcare data</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-green-400">HIPAA</div>
+                        <p class="text-sm text-gray-400 mt-2">Healthcare data</p>
                     </div>
-                    <div class="bg-white border rounded-xl p-4 text-center">
-                        <div class="text-2xl font-bold text-purple-600">SOC 2</div>
-                        <p class="text-sm text-gray-600 mt-2">Security controls</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-purple-400">SOC 2</div>
+                        <p class="text-sm text-gray-400 mt-2">Security controls</p>
                     </div>
                 </div>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Questions to Ask Any AI Provider</h2>
-                <ol class="list-decimal list-inside space-y-2 mb-6">
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Questions to Ask Any AI Provider</h2>
+                <ol class="list-decimal list-inside space-y-2 mb-6 text-gray-400">
                     <li>Is my data used to train your models?</li>
                     <li>Where is my data stored geographically?</li>
                     <li>Who has access to my data?</li>
@@ -126,15 +135,28 @@
                 </div>
             </div>
 
-            <div class="border-t border-gray-200 mt-12 pt-8">
+            <div class="border-t border-white/10 mt-12 pt-8">
                 <a href="/blog/" class="text-primary hover:underline">&larr; Back to Blog</a>
             </div>
         </div>
     </article>
 
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
-        <div class="max-w-7xl mx-auto text-center">
-            <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+    <footer class="bg-black/40 border-t border-white/5 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
+                    <span class="font-bold text-xl">Knowledge Nexus</span>
+                </div>
+                <div class="flex space-x-6 text-sm text-gray-500">
+                    <a href="/privacy/" class="hover:text-white transition">Privacy</a>
+                    <a href="/terms/" class="hover:text-white transition">Terms</a>
+                    <a href="/security/" class="hover:text-white transition">Security</a>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-8 pt-8 text-sm text-center text-gray-600">
+                <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>

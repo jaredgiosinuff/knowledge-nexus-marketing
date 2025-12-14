@@ -14,7 +14,7 @@
     <meta property="og:title" content="What is RAG? A Complete Guide to Retrieval-Augmented Generation">
     <meta property="og:description" content="Learn what RAG is, how it works, and why it's transforming AI applications.">
     <meta property="og:image" content="https://knowledgenexus.ai/images/blog/what-is-rag-og.png">
-    <meta property="article:published_time" content="2024-12-13T00:00:00Z">
+    <meta property="article:published_time" content="2025-12-13T00:00:00Z">
     <meta property="article:author" content="Knowledge Nexus Team">
     <meta property="article:section" content="Technology">
     <meta property="article:tag" content="RAG">
@@ -29,23 +29,14 @@
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#0f172a">
 
-    <!-- Tailwind CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#2563eb',
-                        secondary: '#7c3aed',
-                    }
-                }
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="/css/styles.css">
+    <script>tailwind.config = { theme: { extend: { colors: { dark: '#0f172a', primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4' }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }}}}</script>
+    <style>body { font-family: 'Inter', system-ui, sans-serif; } .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }</style>
 
     <!-- Article Schema -->
     <script type="application/ld+json">
@@ -55,8 +46,8 @@
         "headline": "What is RAG? A Complete Guide to Retrieval-Augmented Generation",
         "description": "Learn what RAG (Retrieval-Augmented Generation) is, how it works, and why it's transforming AI applications.",
         "image": "https://knowledgenexus.ai/images/blog/what-is-rag-og.png",
-        "datePublished": "2024-12-13",
-        "dateModified": "2024-12-13",
+        "datePublished": "2025-12-13",
+        "dateModified": "2025-12-13",
         "author": {
             "@type": "Organization",
             "name": "Knowledge Nexus"
@@ -104,24 +95,21 @@
     }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-dark text-white min-h-screen">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+    <nav class="fixed top-0 left-0 right-0 bg-dark/90 backdrop-blur-md border-b border-white/5 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="/" class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-lg">K</span>
-                        </div>
+                    <a href="/" class="flex items-center space-x-3">
+                        <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
                         <span class="font-bold text-xl">Knowledge Nexus</span>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/#features" class="text-gray-600 hover:text-primary transition">Features</a>
-                    <a href="/#pricing" class="text-gray-600 hover:text-primary transition">Pricing</a>
+                    <a href="/#features" class="text-gray-400 hover:text-white transition">Features</a>
+                    <a href="/#pricing" class="text-gray-400 hover:text-white transition">Pricing</a>
                     <a href="/blog/" class="text-primary font-medium">Blog</a>
-                    <a href="https://docs.knowledgenexus.ai" class="text-gray-600 hover:text-primary transition" rel="noopener">Docs</a>
                 </div>
                 <a href="/#pricing" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">
                     Get Started
@@ -131,14 +119,14 @@
     </nav>
 
     <!-- Breadcrumb -->
-    <div class="pt-20 px-4 bg-white border-b border-gray-200">
+    <div class="pt-20 px-4 border-b border-white/5">
         <div class="max-w-3xl mx-auto py-4">
             <nav class="text-sm text-gray-500">
-                <a href="/" class="hover:text-primary">Home</a>
+                <a href="/" class="hover:text-white transition">Home</a>
                 <span class="mx-2">/</span>
-                <a href="/blog/" class="hover:text-primary">Blog</a>
+                <a href="/blog/" class="hover:text-white transition">Blog</a>
                 <span class="mx-2">/</span>
-                <span class="text-gray-900">What is RAG?</span>
+                <span class="text-white">What is RAG?</span>
             </nav>
         </div>
     </div>
@@ -149,20 +137,20 @@
             <!-- Header -->
             <header class="mb-12">
                 <div class="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <span class="bg-primary/10 text-primary px-2 py-1 rounded">Technology</span>
-                    <span>December 13, 2024</span>
+                    <span class="bg-primary/20 text-primary px-2 py-1 rounded">Technology</span>
+                    <span>December 13, 2025</span>
                     <span>8 min read</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">What is RAG? A Complete Guide to Retrieval-Augmented Generation</h1>
-                <p class="text-xl text-gray-600">Learn how RAG technology is transforming AI applications by combining the power of large language models with your own data for accurate, contextual responses.</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">What is RAG? A Complete Guide to <span class="gradient-text">Retrieval-Augmented Generation</span></h1>
+                <p class="text-xl text-gray-400">Learn how RAG technology is transforming AI applications by combining the power of large language models with your own data for accurate, contextual responses.</p>
             </header>
 
             <!-- Featured Image -->
             <div class="bg-gradient-to-br from-primary to-secondary h-64 md:h-80 rounded-2xl mb-12"></div>
 
             <!-- Table of Contents -->
-            <div class="bg-gray-100 rounded-xl p-6 mb-12">
-                <h2 class="font-semibold mb-4">Table of Contents</h2>
+            <div class="bg-white/5 border border-white/10 rounded-xl p-6 mb-12">
+                <h2 class="font-semibold mb-4 text-white">Table of Contents</h2>
                 <ul class="space-y-2 text-primary">
                     <li><a href="#what-is-rag" class="hover:underline">What is RAG?</a></li>
                     <li><a href="#how-rag-works" class="hover:underline">How RAG Works</a></li>
@@ -174,62 +162,62 @@
             </div>
 
             <!-- Content -->
-            <div class="prose prose-lg max-w-none">
-                <h2 id="what-is-rag" class="text-2xl font-bold mt-12 mb-4">What is RAG?</h2>
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300">
+                <h2 id="what-is-rag" class="text-2xl font-bold mt-12 mb-4 text-white">What is RAG?</h2>
                 <p class="mb-4">
-                    <strong>RAG (Retrieval-Augmented Generation)</strong> is an AI architecture that enhances large language models (LLMs) by giving them access to external knowledge sources. Instead of relying solely on information learned during training, RAG systems can retrieve relevant documents from a knowledge base and use that information to generate more accurate, up-to-date, and contextually relevant responses.
+                    <strong class="text-white">RAG (Retrieval-Augmented Generation)</strong> is an AI architecture that enhances large language models (LLMs) by giving them access to external knowledge sources. Instead of relying solely on information learned during training, RAG systems can retrieve relevant documents from a knowledge base and use that information to generate more accurate, up-to-date, and contextually relevant responses.
                 </p>
                 <p class="mb-4">
                     Think of it like this: a traditional LLM is like a very knowledgeable person who can only answer questions based on what they learned in school. A RAG-powered system is like that same person who can also quickly search through a library of documents before answering, ensuring their response is grounded in specific, relevant information.
                 </p>
 
-                <h2 id="how-rag-works" class="text-2xl font-bold mt-12 mb-4">How RAG Works</h2>
+                <h2 id="how-rag-works" class="text-2xl font-bold mt-12 mb-4 text-white">How RAG Works</h2>
                 <p class="mb-4">RAG systems work through a multi-step process:</p>
 
-                <div class="bg-white border border-gray-200 rounded-xl p-6 my-8">
-                    <h3 class="font-semibold mb-4">The RAG Pipeline</h3>
-                    <ol class="list-decimal list-inside space-y-3">
-                        <li><strong>Document Ingestion:</strong> Your documents are processed and converted into vector embeddings - numerical representations that capture semantic meaning.</li>
-                        <li><strong>Storage:</strong> These embeddings are stored in a vector database (like Qdrant, Pinecone, or ChromaDB) for fast retrieval.</li>
-                        <li><strong>Query Processing:</strong> When a user asks a question, the query is also converted to an embedding.</li>
-                        <li><strong>Retrieval:</strong> The system finds the most semantically similar documents to the query using vector similarity search.</li>
-                        <li><strong>Augmentation:</strong> The retrieved documents are added to the prompt as context.</li>
-                        <li><strong>Generation:</strong> The LLM generates a response based on both its training and the retrieved context.</li>
+                <div class="bg-white/5 border border-white/10 rounded-xl p-6 my-8">
+                    <h3 class="font-semibold mb-4 text-white">The RAG Pipeline</h3>
+                    <ol class="list-decimal list-inside space-y-3 text-gray-400">
+                        <li><strong class="text-white">Document Ingestion:</strong> Your documents are processed and converted into vector embeddings - numerical representations that capture semantic meaning.</li>
+                        <li><strong class="text-white">Storage:</strong> These embeddings are stored in a vector database (like Qdrant, Pinecone, or ChromaDB) for fast retrieval.</li>
+                        <li><strong class="text-white">Query Processing:</strong> When a user asks a question, the query is also converted to an embedding.</li>
+                        <li><strong class="text-white">Retrieval:</strong> The system finds the most semantically similar documents to the query using vector similarity search.</li>
+                        <li><strong class="text-white">Augmentation:</strong> The retrieved documents are added to the prompt as context.</li>
+                        <li><strong class="text-white">Generation:</strong> The LLM generates a response based on both its training and the retrieved context.</li>
                     </ol>
                 </div>
 
-                <h2 id="rag-vs-fine-tuning" class="text-2xl font-bold mt-12 mb-4">RAG vs Fine-Tuning</h2>
+                <h2 id="rag-vs-fine-tuning" class="text-2xl font-bold mt-12 mb-4 text-white">RAG vs Fine-Tuning</h2>
                 <p class="mb-4">
                     Both RAG and fine-tuning aim to make LLMs more useful for specific tasks, but they work very differently:
                 </p>
 
                 <div class="overflow-x-auto my-8">
-                    <table class="min-w-full bg-white border border-gray-200 rounded-xl overflow-hidden">
-                        <thead class="bg-gray-100">
+                    <table class="min-w-full bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+                        <thead class="bg-white/10">
                             <tr>
-                                <th class="px-6 py-3 text-left font-semibold">Aspect</th>
-                                <th class="px-6 py-3 text-left font-semibold">RAG</th>
-                                <th class="px-6 py-3 text-left font-semibold">Fine-Tuning</th>
+                                <th class="px-6 py-3 text-left font-semibold text-white">Aspect</th>
+                                <th class="px-6 py-3 text-left font-semibold text-white">RAG</th>
+                                <th class="px-6 py-3 text-left font-semibold text-white">Fine-Tuning</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200">
+                        <tbody class="divide-y divide-white/10 text-gray-400">
                             <tr>
-                                <td class="px-6 py-4 font-medium">Knowledge Updates</td>
+                                <td class="px-6 py-4 font-medium text-white">Knowledge Updates</td>
                                 <td class="px-6 py-4">Instant - just add new documents</td>
                                 <td class="px-6 py-4">Requires retraining</td>
                             </tr>
                             <tr>
-                                <td class="px-6 py-4 font-medium">Cost</td>
+                                <td class="px-6 py-4 font-medium text-white">Cost</td>
                                 <td class="px-6 py-4">Lower - no training required</td>
                                 <td class="px-6 py-4">Higher - compute-intensive</td>
                             </tr>
                             <tr>
-                                <td class="px-6 py-4 font-medium">Transparency</td>
+                                <td class="px-6 py-4 font-medium text-white">Transparency</td>
                                 <td class="px-6 py-4">High - can cite sources</td>
                                 <td class="px-6 py-4">Low - knowledge is implicit</td>
                             </tr>
                             <tr>
-                                <td class="px-6 py-4 font-medium">Best For</td>
+                                <td class="px-6 py-4 font-medium text-white">Best For</td>
                                 <td class="px-6 py-4">Knowledge bases, Q&A systems</td>
                                 <td class="px-6 py-4">Style/format changes</td>
                             </tr>
@@ -237,54 +225,54 @@
                     </table>
                 </div>
 
-                <h2 id="benefits" class="text-2xl font-bold mt-12 mb-4">Benefits of RAG</h2>
+                <h2 id="benefits" class="text-2xl font-bold mt-12 mb-4 text-white">Benefits of RAG</h2>
 
                 <div class="grid md:grid-cols-2 gap-6 my-8">
-                    <div class="bg-white border border-gray-200 rounded-xl p-6">
-                        <h3 class="font-semibold text-lg mb-2">Reduced Hallucinations</h3>
-                        <p class="text-gray-600">By grounding responses in actual documents, RAG significantly reduces the tendency of LLMs to make up information.</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="font-semibold text-lg mb-2 text-white">Reduced Hallucinations</h3>
+                        <p class="text-gray-400">By grounding responses in actual documents, RAG significantly reduces the tendency of LLMs to make up information.</p>
                     </div>
-                    <div class="bg-white border border-gray-200 rounded-xl p-6">
-                        <h3 class="font-semibold text-lg mb-2">Current Information</h3>
-                        <p class="text-gray-600">RAG can access information that wasn't available when the LLM was trained, keeping responses up-to-date.</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="font-semibold text-lg mb-2 text-white">Current Information</h3>
+                        <p class="text-gray-400">RAG can access information that wasn't available when the LLM was trained, keeping responses up-to-date.</p>
                     </div>
-                    <div class="bg-white border border-gray-200 rounded-xl p-6">
-                        <h3 class="font-semibold text-lg mb-2">Source Citations</h3>
-                        <p class="text-gray-600">Users can verify answers by checking the source documents, building trust in the system.</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="font-semibold text-lg mb-2 text-white">Source Citations</h3>
+                        <p class="text-gray-400">Users can verify answers by checking the source documents, building trust in the system.</p>
                     </div>
-                    <div class="bg-white border border-gray-200 rounded-xl p-6">
-                        <h3 class="font-semibold text-lg mb-2">Data Privacy</h3>
-                        <p class="text-gray-600">Your sensitive data stays in your knowledge base and is never used to train external models.</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="font-semibold text-lg mb-2 text-white">Data Privacy</h3>
+                        <p class="text-gray-400">Your sensitive data stays in your knowledge base and is never used to train external models.</p>
                     </div>
                 </div>
 
-                <h2 id="use-cases" class="text-2xl font-bold mt-12 mb-4">Real-World Use Cases</h2>
+                <h2 id="use-cases" class="text-2xl font-bold mt-12 mb-4 text-white">Real-World Use Cases</h2>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">Enterprise Knowledge Management</h3>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">Enterprise Knowledge Management</h3>
                 <p class="mb-4">
                     Organizations use RAG to make their internal documentation, policies, and institutional knowledge searchable and accessible. Employees can ask questions like "What's our policy on remote work?" and get accurate answers with citations to the relevant HR documents.
                 </p>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">Customer Support</h3>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">Customer Support</h3>
                 <p class="mb-4">
                     RAG powers intelligent chatbots that can answer customer questions by searching through product documentation, FAQs, and support tickets. This provides faster, more accurate support while reducing the load on human agents.
                 </p>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">Legal Research</h3>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">Legal Research</h3>
                 <p class="mb-4">
                     Law firms use RAG to quickly search through case law, contracts, and legal documents. Lawyers can ask specific questions and get relevant precedents and clauses surfaced instantly.
                 </p>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">Personal Knowledge Management</h3>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">Personal Knowledge Management</h3>
                 <p class="mb-4">
                     Individuals use RAG to create personal knowledge bases from their notes, documents, and research. Tools like Knowledge Nexus make it easy to ask questions across your entire digital life.
                 </p>
 
-                <h2 id="getting-started" class="text-2xl font-bold mt-12 mb-4">Getting Started with RAG</h2>
+                <h2 id="getting-started" class="text-2xl font-bold mt-12 mb-4 text-white">Getting Started with RAG</h2>
                 <p class="mb-4">
                     Ready to experience the power of RAG for yourself? Knowledge Nexus provides a complete RAG-powered knowledge management platform that's ready to use in minutes:
                 </p>
-                <ul class="list-disc list-inside space-y-2 mb-8">
+                <ul class="list-disc list-inside space-y-2 mb-8 text-gray-400">
                     <li>Upload your documents (PDF, Word, text, images, and more)</li>
                     <li>Our system automatically processes and indexes them</li>
                     <li>Ask questions in natural language</li>
@@ -293,11 +281,11 @@
 
                 <div class="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 text-white text-center my-12">
                     <h3 class="text-2xl font-bold mb-4">Try RAG-Powered Search Today</h3>
-                    <p class="mb-6 opacity-90">Start with our free Explorer tier - no credit card required.</p>
+                    <p class="mb-6 opacity-90">Start with our free tier - no credit card required.</p>
                     <a href="/#pricing" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Get Started Free</a>
                 </div>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Conclusion</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Conclusion</h2>
                 <p class="mb-4">
                     RAG represents a significant advancement in how we can use AI to interact with our own data. By combining the generative capabilities of large language models with precise retrieval from your documents, RAG systems provide accurate, trustworthy, and contextually relevant responses.
                 </p>
@@ -307,26 +295,26 @@
             </div>
 
             <!-- Share -->
-            <div class="border-t border-gray-200 mt-12 pt-8">
-                <h3 class="font-semibold mb-4">Share this article</h3>
+            <div class="border-t border-white/10 mt-12 pt-8">
+                <h3 class="font-semibold mb-4 text-white">Share this article</h3>
                 <div class="flex space-x-4">
                     <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600 transition">Twitter</a>
                     <a href="#" class="bg-blue-700 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-800 transition">LinkedIn</a>
-                    <a href="#" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-300 transition">Copy Link</a>
+                    <a href="#" class="bg-white/10 text-white px-4 py-2 rounded-lg text-sm hover:bg-white/20 transition">Copy Link</a>
                 </div>
             </div>
 
             <!-- Related Posts -->
-            <div class="border-t border-gray-200 mt-12 pt-8">
-                <h3 class="font-semibold mb-6">Related Articles</h3>
+            <div class="border-t border-white/10 mt-12 pt-8">
+                <h3 class="font-semibold mb-6 text-white">Related Articles</h3>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <a href="/blog/semantic-search-vs-keyword-search/" class="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-lg transition group">
-                        <h4 class="font-semibold group-hover:text-primary transition">Semantic Search vs Keyword Search</h4>
-                        <p class="text-sm text-gray-600 mt-2">Why context matters in modern search systems.</p>
+                    <a href="/blog/semantic-search-vs-keyword-search/" class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition group">
+                        <h4 class="font-semibold group-hover:text-primary transition text-white">Semantic Search vs Keyword Search</h4>
+                        <p class="text-sm text-gray-500 mt-2">Why context matters in modern search systems.</p>
                     </a>
-                    <a href="/blog/self-hosting-ai-knowledge-base/" class="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-lg transition group">
-                        <h4 class="font-semibold group-hover:text-primary transition">Self-Hosting Your AI Knowledge Base</h4>
-                        <p class="text-sm text-gray-600 mt-2">A complete guide to deploying on your own infrastructure.</p>
+                    <a href="/blog/self-hosting-ai-knowledge-base/" class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition group">
+                        <h4 class="font-semibold group-hover:text-primary transition text-white">Self-Hosting Your AI Knowledge Base</h4>
+                        <p class="text-sm text-gray-500 mt-2">A complete guide to deploying on your own infrastructure.</p>
                     </a>
                 </div>
             </div>
@@ -334,43 +322,20 @@
     </article>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+    <footer class="bg-black/40 border-t border-white/5 py-12 px-4">
         <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-lg">K</span>
-                        </div>
-                        <span class="font-bold text-xl text-white">Knowledge Nexus</span>
-                    </div>
-                    <p class="text-sm">Your AI-powered knowledge platform.</p>
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
+                    <span class="font-bold text-xl">Knowledge Nexus</span>
                 </div>
-                <div>
-                    <h5 class="font-semibold text-white mb-4">Product</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="/#features" class="hover:text-white transition">Features</a></li>
-                        <li><a href="/#pricing" class="hover:text-white transition">Pricing</a></li>
-                        <li><a href="/#enterprise" class="hover:text-white transition">Enterprise</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-semibold text-white mb-4">Resources</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="https://docs.knowledgenexus.ai" class="hover:text-white transition" rel="noopener">Documentation</a></li>
-                        <li><a href="/blog/" class="hover:text-white transition">Blog</a></li>
-                        <li><a href="https://github.com/knowledgenexus" class="hover:text-white transition" rel="noopener noreferrer" target="_blank">GitHub</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-semibold text-white mb-4">Legal</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="/privacy/" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="/terms/" class="hover:text-white transition">Terms of Service</a></li>
-                    </ul>
+                <div class="flex space-x-6 text-sm text-gray-500">
+                    <a href="/privacy/" class="hover:text-white transition">Privacy</a>
+                    <a href="/terms/" class="hover:text-white transition">Terms</a>
+                    <a href="/security/" class="hover:text-white transition">Security</a>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+            <div class="border-t border-white/5 mt-8 pt-8 text-sm text-center text-gray-600">
                 <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
             </div>
         </div>

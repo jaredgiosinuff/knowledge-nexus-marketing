@@ -13,20 +13,29 @@
     <meta property="og:image" content="https://knowledgenexus.ai/images/og-blog.png">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#2563eb', secondary: '#7c3aed' }}}}</script>
+    <script>tailwind.config = { theme: { extend: { colors: { dark: '#0f172a', primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4' }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }}}}</script>
+    <style>body { font-family: 'Inter', system-ui, sans-serif; } .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }</style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+<body class="bg-dark text-white min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 bg-dark/90 backdrop-blur-md border-b border-white/5 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">K</span>
-                    </div>
+                <a href="/" class="flex items-center space-x-3">
+                    <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
                     <span class="font-bold text-xl">Knowledge Nexus</span>
                 </a>
-                <a href="/#pricing" class="bg-primary text-white px-4 py-2 rounded-lg">Get Started</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#features" class="text-gray-400 hover:text-white transition">Features</a>
+                    <a href="/#pricing" class="text-gray-400 hover:text-white transition">Pricing</a>
+                    <a href="/blog/" class="text-primary font-medium">Blog</a>
+                </div>
+                <a href="/#pricing" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">Get Started</a>
             </div>
         </div>
     </nav>
@@ -35,104 +44,117 @@
         <div class="max-w-3xl mx-auto">
             <header class="mb-12">
                 <div class="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <span class="bg-cyan-100 text-cyan-700 px-2 py-1 rounded">Research</span>
-                    <span>November 28, 2024</span>
+                    <span class="bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded">Research</span>
+                    <span>November 28, 2025</span>
                     <span>8 min read</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Using AI as Your Research Assistant: Workflows That Work</h1>
-                <p class="text-xl text-gray-600">Practical workflows for academics and professionals to accelerate research with AI agents.</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Using AI as Your Research Assistant: <span class="gradient-text">Workflows That Work</span></h1>
+                <p class="text-xl text-gray-400">Practical workflows for academics and professionals to accelerate research with AI agents.</p>
             </header>
 
             <div class="bg-gradient-to-br from-cyan-500 to-blue-500 h-64 rounded-2xl mb-12"></div>
 
-            <div class="prose prose-lg max-w-none">
-                <h2 class="text-2xl font-bold mt-8 mb-4">The Research Bottleneck</h2>
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300">
+                <h2 class="text-2xl font-bold mt-8 mb-4 text-white">The Research Bottleneck</h2>
                 <p class="mb-4">Researchers spend an estimated 50% of their time on information gathering rather than actual analysis. Reading papers, tracking citations, synthesizing findings across sources - it's necessary work, but it doesn't scale.</p>
 
                 <p class="mb-4">AI research assistants can handle the heavy lifting of information retrieval while you focus on insight and creativity.</p>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Workflow 1: Literature Review</h2>
-                <div class="bg-white border border-gray-200 rounded-xl p-6 my-6">
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Workflow 1: Literature Review</h2>
+                <div class="bg-white/5 border border-white/10 rounded-xl p-6 my-6">
                     <ol class="space-y-4">
                         <li class="flex items-start">
-                            <span class="bg-cyan-100 text-cyan-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-sm font-bold">1</span>
-                            <div><strong>Upload your papers</strong> - Add PDFs of relevant papers to your knowledge base</div>
+                            <span class="bg-cyan-500/20 text-cyan-400 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-sm font-bold">1</span>
+                            <div><strong class="text-white">Upload your papers</strong> - Add PDFs of relevant papers to your knowledge base</div>
                         </li>
                         <li class="flex items-start">
-                            <span class="bg-cyan-100 text-cyan-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-sm font-bold">2</span>
-                            <div><strong>Ask for themes</strong> - "What are the main themes across these papers on [topic]?"</div>
+                            <span class="bg-cyan-500/20 text-cyan-400 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-sm font-bold">2</span>
+                            <div><strong class="text-white">Ask for themes</strong> - "What are the main themes across these papers on [topic]?"</div>
                         </li>
                         <li class="flex items-start">
-                            <span class="bg-cyan-100 text-cyan-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-sm font-bold">3</span>
-                            <div><strong>Find gaps</strong> - "What research gaps are identified in these papers?"</div>
+                            <span class="bg-cyan-500/20 text-cyan-400 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-sm font-bold">3</span>
+                            <div><strong class="text-white">Find gaps</strong> - "What research gaps are identified in these papers?"</div>
                         </li>
                         <li class="flex items-start">
-                            <span class="bg-cyan-100 text-cyan-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-sm font-bold">4</span>
-                            <div><strong>Generate summary</strong> - "Summarize the methodology used in [specific paper]"</div>
+                            <span class="bg-cyan-500/20 text-cyan-400 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-sm font-bold">4</span>
+                            <div><strong class="text-white">Generate summary</strong> - "Summarize the methodology used in [specific paper]"</div>
                         </li>
                     </ol>
                 </div>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Workflow 2: Citation Mining</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Workflow 2: Citation Mining</h2>
                 <p class="mb-4">When you find a relevant paper, use AI to explore its reference network:</p>
-                <ul class="list-disc list-inside space-y-2 mb-6">
+                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-400">
                     <li>"Which papers does [Paper X] cite about [specific topic]?"</li>
                     <li>"What methodology does [Paper X] use and who developed it?"</li>
                     <li>"Find contradicting findings between [Paper X] and [Paper Y]"</li>
                 </ul>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Workflow 3: Synthesis Writing</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Workflow 3: Synthesis Writing</h2>
                 <p class="mb-4">Use AI to help draft synthesis sections:</p>
-                <div class="bg-gray-100 rounded-xl p-4 my-6 text-sm">
-                    <p class="italic">"Based on the papers in my knowledge base, write a paragraph synthesizing the different approaches to [research question]. Include citations."</p>
+                <div class="bg-white/5 border border-white/10 rounded-xl p-4 my-6 text-sm">
+                    <p class="italic text-gray-400">"Based on the papers in my knowledge base, write a paragraph synthesizing the different approaches to [research question]. Include citations."</p>
                 </div>
                 <p class="mb-4">The AI will pull relevant quotes and findings from your uploaded papers, properly attributed to their sources.</p>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Workflow 4: Research Agents</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Workflow 4: Research Agents</h2>
                 <p class="mb-4">Knowledge Nexus's research agents can work autonomously:</p>
                 <div class="grid md:grid-cols-2 gap-4 my-8">
-                    <div class="bg-white border rounded-xl p-4">
-                        <h3 class="font-semibold text-cyan-700">Daily Digest Agent</h3>
-                        <p class="text-sm text-gray-600">Monitors new papers in your field and summarizes relevant ones</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                        <h3 class="font-semibold text-cyan-400">Daily Digest Agent</h3>
+                        <p class="text-sm text-gray-400">Monitors new papers in your field and summarizes relevant ones</p>
                     </div>
-                    <div class="bg-white border rounded-xl p-4">
-                        <h3 class="font-semibold text-blue-700">Citation Alert Agent</h3>
-                        <p class="text-sm text-gray-600">Notifies you when papers you care about get cited</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                        <h3 class="font-semibold text-blue-400">Citation Alert Agent</h3>
+                        <p class="text-sm text-gray-400">Notifies you when papers you care about get cited</p>
                     </div>
-                    <div class="bg-white border rounded-xl p-4">
-                        <h3 class="font-semibold text-purple-700">Competitor Watch Agent</h3>
-                        <p class="text-sm text-gray-600">Tracks publications from specific researchers or labs</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                        <h3 class="font-semibold text-purple-400">Competitor Watch Agent</h3>
+                        <p class="text-sm text-gray-400">Tracks publications from specific researchers or labs</p>
                     </div>
-                    <div class="bg-white border rounded-xl p-4">
-                        <h3 class="font-semibold text-green-700">Methodology Scout Agent</h3>
-                        <p class="text-sm text-gray-600">Finds papers using specific methods or datasets</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                        <h3 class="font-semibold text-green-400">Methodology Scout Agent</h3>
+                        <p class="text-sm text-gray-400">Finds papers using specific methods or datasets</p>
                     </div>
                 </div>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Best Practices</h2>
-                <ul class="list-disc list-inside space-y-2 mb-6">
-                    <li><strong>Verify citations</strong> - Always check that AI-suggested citations are accurate</li>
-                    <li><strong>Use specific queries</strong> - More specific questions yield better results</li>
-                    <li><strong>Organize by project</strong> - Create separate knowledge bases for different research projects</li>
-                    <li><strong>Include notes</strong> - Upload your own notes and annotations alongside papers</li>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Best Practices</h2>
+                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-400">
+                    <li><strong class="text-white">Verify citations</strong> - Always check that AI-suggested citations are accurate</li>
+                    <li><strong class="text-white">Use specific queries</strong> - More specific questions yield better results</li>
+                    <li><strong class="text-white">Organize by project</strong> - Create separate knowledge bases for different research projects</li>
+                    <li><strong class="text-white">Include notes</strong> - Upload your own notes and annotations alongside papers</li>
                 </ul>
 
                 <div class="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 text-white text-center my-12">
                     <h3 class="text-2xl font-bold mb-4">Accelerate Your Research</h3>
-                    <p class="mb-6 opacity-90">The Scholar plan includes research agents and unlimited document uploads.</p>
+                    <p class="mb-6 opacity-90">The Pro plan includes research agents and unlimited document uploads.</p>
                     <a href="/#pricing" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Start Free Trial</a>
                 </div>
             </div>
 
-            <div class="border-t border-gray-200 mt-12 pt-8">
+            <div class="border-t border-white/10 mt-12 pt-8">
                 <a href="/blog/" class="text-primary hover:underline">&larr; Back to Blog</a>
             </div>
         </div>
     </article>
 
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
-        <div class="max-w-7xl mx-auto text-center">
-            <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+    <footer class="bg-black/40 border-t border-white/5 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
+                    <span class="font-bold text-xl">Knowledge Nexus</span>
+                </div>
+                <div class="flex space-x-6 text-sm text-gray-500">
+                    <a href="/privacy/" class="hover:text-white transition">Privacy</a>
+                    <a href="/terms/" class="hover:text-white transition">Terms</a>
+                    <a href="/security/" class="hover:text-white transition">Security</a>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-8 pt-8 text-sm text-center text-gray-600">
+                <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>

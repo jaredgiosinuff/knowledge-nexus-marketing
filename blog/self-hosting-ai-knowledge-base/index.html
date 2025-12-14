@@ -13,20 +13,29 @@
     <meta property="og:image" content="https://knowledgenexus.ai/images/og-blog.png">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#2563eb', secondary: '#7c3aed' }}}}</script>
+    <script>tailwind.config = { theme: { extend: { colors: { dark: '#0f172a', primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4' }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }}}}</script>
+    <style>body { font-family: 'Inter', system-ui, sans-serif; } .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }</style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+<body class="bg-dark text-white min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 bg-dark/90 backdrop-blur-md border-b border-white/5 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">K</span>
-                    </div>
+                <a href="/" class="flex items-center space-x-3">
+                    <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
                     <span class="font-bold text-xl">Knowledge Nexus</span>
                 </a>
-                <a href="/#enterprise" class="bg-primary text-white px-4 py-2 rounded-lg">Get Started</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#features" class="text-gray-400 hover:text-white transition">Features</a>
+                    <a href="/#pricing" class="text-gray-400 hover:text-white transition">Pricing</a>
+                    <a href="/blog/" class="text-primary font-medium">Blog</a>
+                </div>
+                <a href="/#enterprise" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">Get Started</a>
             </div>
         </div>
     </nav>
@@ -35,23 +44,23 @@
         <div class="max-w-3xl mx-auto">
             <header class="mb-12">
                 <div class="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <span class="bg-gray-200 text-gray-700 px-2 py-1 rounded">Tutorial</span>
-                    <span>December 2, 2024</span>
+                    <span class="bg-gray-500/20 text-gray-300 px-2 py-1 rounded">Tutorial</span>
+                    <span>December 2, 2025</span>
                     <span>10 min read</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Self-Hosting Your AI Knowledge Base: A Complete Guide</h1>
-                <p class="text-xl text-gray-600">Step-by-step guide to deploying Knowledge Nexus on your own infrastructure with Docker.</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Self-Hosting Your AI Knowledge Base: <span class="gradient-text">A Complete Guide</span></h1>
+                <p class="text-xl text-gray-400">Step-by-step guide to deploying Knowledge Nexus on your own infrastructure with Docker.</p>
             </header>
 
             <div class="bg-gradient-to-br from-gray-700 to-gray-900 h-64 rounded-2xl mb-12"></div>
 
-            <div class="prose prose-lg max-w-none">
-                <h2 class="text-2xl font-bold mt-8 mb-4">Why Self-Host?</h2>
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300">
+                <h2 class="text-2xl font-bold mt-8 mb-4 text-white">Why Self-Host?</h2>
                 <p class="mb-4">Self-hosting gives you complete control over your data and infrastructure. Your documents never leave your servers, you choose your own LLM providers, and you can customize everything to your needs.</p>
 
-                <div class="bg-white border border-gray-200 rounded-xl p-6 my-8">
-                    <h3 class="font-semibold mb-3">Benefits of Self-Hosting</h3>
-                    <ul class="space-y-2 text-sm">
+                <div class="bg-white/5 border border-white/10 rounded-xl p-6 my-8">
+                    <h3 class="font-semibold mb-3 text-white">Benefits of Self-Hosting</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
                         <li>&#10003; Complete data sovereignty</li>
                         <li>&#10003; Compliance with strict regulations (HIPAA, GDPR, etc.)</li>
                         <li>&#10003; Customizable LLM providers (Ollama, vLLM, OpenAI, Anthropic)</li>
@@ -60,15 +69,15 @@
                     </ul>
                 </div>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Prerequisites</h2>
-                <ul class="list-disc list-inside space-y-2 mb-6">
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Prerequisites</h2>
+                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-400">
                     <li>Docker and Docker Compose installed</li>
                     <li>Minimum 8GB RAM (16GB+ recommended)</li>
                     <li>50GB+ storage for documents and embeddings</li>
                     <li>Optional: NVIDIA GPU for local LLM inference</li>
                 </ul>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Quick Start</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Quick Start</h2>
                 <div class="bg-gray-900 rounded-xl p-6 font-mono text-sm text-gray-300 my-6 overflow-x-auto">
                     <div class="text-gray-500"># Clone the repository</div>
                     <div class="text-green-400">$ git clone https://github.com/knowledgenexus/knowledge-nexus.git</div>
@@ -80,58 +89,58 @@
                     <div class="mt-4 text-gray-500"># Access at http://localhost:8080</div>
                 </div>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Architecture Overview</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Architecture Overview</h2>
                 <p class="mb-4">Knowledge Nexus consists of several microservices:</p>
 
                 <div class="grid gap-4 my-8">
-                    <div class="bg-white border rounded-xl p-4">
-                        <h3 class="font-semibold">API Gateway</h3>
-                        <p class="text-sm text-gray-600">Routes requests, handles authentication, rate limiting</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                        <h3 class="font-semibold text-white">API Gateway</h3>
+                        <p class="text-sm text-gray-400">Routes requests, handles authentication, rate limiting</p>
                     </div>
-                    <div class="bg-white border rounded-xl p-4">
-                        <h3 class="font-semibold">Document Processing</h3>
-                        <p class="text-sm text-gray-600">Parses PDFs, extracts text, generates embeddings</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                        <h3 class="font-semibold text-white">Document Processing</h3>
+                        <p class="text-sm text-gray-400">Parses PDFs, extracts text, generates embeddings</p>
                     </div>
-                    <div class="bg-white border rounded-xl p-4">
-                        <h3 class="font-semibold">Vector Database (Qdrant)</h3>
-                        <p class="text-sm text-gray-600">Stores and searches document embeddings</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                        <h3 class="font-semibold text-white">Vector Database (Qdrant)</h3>
+                        <p class="text-sm text-gray-400">Stores and searches document embeddings</p>
                     </div>
-                    <div class="bg-white border rounded-xl p-4">
-                        <h3 class="font-semibold">LLM Service</h3>
-                        <p class="text-sm text-gray-600">Handles chat completions, can use local or cloud LLMs</p>
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                        <h3 class="font-semibold text-white">LLM Service</h3>
+                        <p class="text-sm text-gray-400">Handles chat completions, can use local or cloud LLMs</p>
                     </div>
                 </div>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Configuring Your LLM</h2>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Configuring Your LLM</h2>
                 <p class="mb-4">Knowledge Nexus supports multiple LLM backends:</p>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">Option 1: Ollama (Local, Free)</h3>
-                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-gray-300 my-4">
-                    <div class="text-cyan-400">LLM_PROVIDER=ollama</div>
-                    <div class="text-cyan-400">OLLAMA_BASE_URL=http://ollama:11434</div>
-                    <div class="text-cyan-400">OLLAMA_MODEL=llama3.2</div>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">Option 1: Ollama (Local, Free)</h3>
+                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-cyan-400 my-4">
+                    <div>LLM_PROVIDER=ollama</div>
+                    <div>OLLAMA_BASE_URL=http://ollama:11434</div>
+                    <div>OLLAMA_MODEL=llama3.2</div>
                 </div>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">Option 2: OpenAI API</h3>
-                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-gray-300 my-4">
-                    <div class="text-cyan-400">LLM_PROVIDER=openai</div>
-                    <div class="text-cyan-400">OPENAI_API_KEY=sk-...</div>
-                    <div class="text-cyan-400">OPENAI_MODEL=gpt-4-turbo</div>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">Option 2: OpenAI API</h3>
+                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-cyan-400 my-4">
+                    <div>LLM_PROVIDER=openai</div>
+                    <div>OPENAI_API_KEY=sk-...</div>
+                    <div>OPENAI_MODEL=gpt-4-turbo</div>
                 </div>
 
-                <h3 class="text-xl font-semibold mt-8 mb-3">Option 3: Anthropic Claude</h3>
-                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-gray-300 my-4">
-                    <div class="text-cyan-400">LLM_PROVIDER=anthropic</div>
-                    <div class="text-cyan-400">ANTHROPIC_API_KEY=sk-ant-...</div>
-                    <div class="text-cyan-400">ANTHROPIC_MODEL=claude-3-sonnet</div>
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-white">Option 3: Anthropic Claude</h3>
+                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-cyan-400 my-4">
+                    <div>LLM_PROVIDER=anthropic</div>
+                    <div>ANTHROPIC_API_KEY=sk-ant-...</div>
+                    <div>ANTHROPIC_MODEL=claude-3-sonnet</div>
                 </div>
 
-                <h2 class="text-2xl font-bold mt-12 mb-4">Production Considerations</h2>
-                <ul class="list-disc list-inside space-y-2 mb-6">
-                    <li><strong>SSL/TLS:</strong> Use a reverse proxy (nginx, Traefik) with Let's Encrypt</li>
-                    <li><strong>Backups:</strong> Schedule regular backups of PostgreSQL and Qdrant data</li>
-                    <li><strong>Monitoring:</strong> Enable Prometheus metrics endpoint</li>
-                    <li><strong>Scaling:</strong> Run multiple replicas behind a load balancer</li>
+                <h2 class="text-2xl font-bold mt-12 mb-4 text-white">Production Considerations</h2>
+                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-400">
+                    <li><strong class="text-white">SSL/TLS:</strong> Use a reverse proxy (nginx, Traefik) with Let's Encrypt</li>
+                    <li><strong class="text-white">Backups:</strong> Schedule regular backups of PostgreSQL and Qdrant data</li>
+                    <li><strong class="text-white">Monitoring:</strong> Enable Prometheus metrics endpoint</li>
+                    <li><strong class="text-white">Scaling:</strong> Run multiple replicas behind a load balancer</li>
                 </ul>
 
                 <div class="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 text-white text-center my-12">
@@ -141,15 +150,28 @@
                 </div>
             </div>
 
-            <div class="border-t border-gray-200 mt-12 pt-8">
+            <div class="border-t border-white/10 mt-12 pt-8">
                 <a href="/blog/" class="text-primary hover:underline">&larr; Back to Blog</a>
             </div>
         </div>
     </article>
 
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
-        <div class="max-w-7xl mx-auto text-center">
-            <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+    <footer class="bg-black/40 border-t border-white/5 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <img src="/images/logo.png" alt="Knowledge Nexus" class="h-8 w-8 rounded-lg">
+                    <span class="font-bold text-xl">Knowledge Nexus</span>
+                </div>
+                <div class="flex space-x-6 text-sm text-gray-500">
+                    <a href="/privacy/" class="hover:text-white transition">Privacy</a>
+                    <a href="/terms/" class="hover:text-white transition">Terms</a>
+                    <a href="/security/" class="hover:text-white transition">Security</a>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-8 pt-8 text-sm text-center text-gray-600">
+                <p>&copy; 2025 Knowledge Nexus. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>
