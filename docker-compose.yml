@@ -1,0 +1,15 @@
+services:
+  marketing-site:
+    image: nginx:alpine
+    container_name: kn-marketing-site
+    ports:
+      - "8381:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
