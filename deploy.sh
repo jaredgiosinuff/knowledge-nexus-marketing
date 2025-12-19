@@ -59,6 +59,31 @@ if [ -d "fonts" ]; then
         --cache-control "max-age=31536000"
 fi
 
+# Upload downloads if they exist
+if [ -d "downloads" ]; then
+    echo "Uploading downloads..."
+    aws s3 sync downloads/ "s3://$TARGET_BUCKET/downloads/" \
+        --cache-control "max-age=3600"
+fi
+
+# Upload blog if it exists
+if [ -d "blog" ]; then
+    echo "Uploading blog..."
+    aws s3 sync blog/ "s3://$TARGET_BUCKET/blog/" \
+        --content-type "text/html; charset=utf-8" \
+        --cache-control "max-age=300"
+fi
+
+# Upload other pages
+for dir in privacy terms security; do
+    if [ -d "$dir" ]; then
+        echo "Uploading $dir..."
+        aws s3 sync $dir/ "s3://$TARGET_BUCKET/$dir/" \
+            --content-type "text/html; charset=utf-8" \
+            --cache-control "max-age=300"
+    fi
+done
+
 # Configure website hosting
 echo "Configuring website hosting..."
 aws s3api put-bucket-website \
